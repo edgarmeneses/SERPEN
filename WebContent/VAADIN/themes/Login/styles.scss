@@ -1,0 +1,14 @@
+@import "addons.scss";
+@import "Login.scss";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in Login.scss */
+.Login {
+  @include addons;
+  @include Login;
+  
+  .v-SIDEBAR{
+	$v-background-color: #87CEEB;
+     background-color: $v-background-color;
+}
+}

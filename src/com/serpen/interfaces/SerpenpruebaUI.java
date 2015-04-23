@@ -1,0 +1,73 @@
+
+package com.serpen.interfaces;
+
+import javax.servlet.annotation.WebServlet;
+
+import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.VaadinServlet;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.UI;
+
+
+
+@Theme("Login")
+public class SerpenpruebaUI extends UI implements ClickListener {
+
+	public Button button;
+	
+	@WebServlet(value = "/*", asyncSupported = true)
+	@VaadinServletConfiguration(productionMode = false, ui = SerpenpruebaUI.class)
+	public static class Servlet extends VaadinServlet {
+	}
+
+	@Override
+	protected void init(VaadinRequest request) {
+		
+		Navigator navigator = new Navigator(this, this);
+		navigator.addView(Login.NAME, new Login(navigator) );
+		navigator.addView(Question.NAME, new Question(navigator));
+		navigator.addView(Administrator.NAME3, new Administrator(navigator));
+		navigator.addView(RestorePassword.NAME2, new RestorePassword(navigator));
+//		CreateUser createUser = new CreateUser();
+//		layout.addComponent(createUser);
+		
+//		RestorePassword restorePassword = new RestorePassword();
+//		layout.addComponent(restorePassword);
+		
+		//layout.addComponent(new Label("Prueba..."));
+//		Logue logue = new Logue();
+//		layout.addComponent(logue);
+
+//		Login login = new Login();
+//		layout.addComponent(login);
+//	
+//		Question question = new Question();
+//		layout.addComponent(question);
+//		
+//		Administrator administrator= new Administrator();
+//		layout.addComponent(administrator);
+		
+//		List list = new List();
+//		layout.addComponent(list);
+		
+		
+//		
+		
+		//setContent(new Logue());
+	}
+
+	@Override
+	public void buttonClick(ClickEvent event) {
+		// TODO Auto-generated method stub
+		button.setCaption("clic");
+		Navigator navigator = new Navigator(this, this);
+		Navigator navigator2 = new Navigator(this, this);	
+	}
+
+}
