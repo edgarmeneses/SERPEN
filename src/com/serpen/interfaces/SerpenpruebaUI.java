@@ -30,8 +30,8 @@ public class SerpenpruebaUI extends UI implements ClickListener {
 	protected void init(VaadinRequest request) {
 		
 		Navigator navigator = new Navigator(this, this);
-		navigator.addView(Login.NAME, new Login(navigator) );
-		navigator.addView(Question.NAME2, new Question(navigator));
+		navigator.addView(Login.NAMELOGUEO, new Login(navigator) );
+		navigator.addView(Question.NAMEQUESTION, new Question(navigator));
 		//navigator.addView(Administrator.NAME3, new Administrator(navigator));
 		//navigator.addView(RestorePassword.NAME4, new RestorePassword(navigator));
 //		navigator.addView(Login.NAME, new Login(navigator) );

@@ -10,13 +10,16 @@ public class EditUsers extends CustomComponent implements View{
 	
 	private PanelAdministrator administrator;
 	private PanelEditUsers editUsers;
-	public static final String NAME="EditarUsuario";
+	public static final String NAMEEDIT="EditarUsuario";
 	
 	public EditUsers(Navigator navigator) {
+		
 		HorizontalLayout layout = new HorizontalLayout();
 		
 		administrator = new PanelAdministrator(navigator);
-		editUsers = new PanelEditUsers();
+		editUsers = new PanelEditUsers(navigator);
+		
+		
 		
 		layout.addComponent(administrator);
 		layout.addComponent(editUsers);

@@ -91,7 +91,7 @@ public class PanelCreateUser extends Panel implements View{
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				//navigator.addView(Administrator.NAME3, new );
-				navigator.navigateTo(Administrator.NAME3);
+				navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
 			}
 		});
 		

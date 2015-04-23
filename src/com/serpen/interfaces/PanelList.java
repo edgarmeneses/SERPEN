@@ -81,7 +81,7 @@ public class PanelList extends Panel{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.navigateTo(Administrator.NAME3);
+				navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
 			}
 		});
 		

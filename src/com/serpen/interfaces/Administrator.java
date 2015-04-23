@@ -22,7 +22,7 @@ import com.vaadin.ui.Component.Event;
 
 public class Administrator extends CustomComponent implements View{
 	
-	public static final String NAME3="Administrador";
+	public static final String NAMEADMINISTRATOR="Administrador";
 	private PanelAdministrator paneAdministrator;
 	
 	public Administrator (Navigator navigator){	

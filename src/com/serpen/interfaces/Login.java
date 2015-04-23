@@ -22,7 +22,8 @@ import com.vaadin.ui.Button.ClickListener;
 
 public class Login extends CustomComponent implements View{
 	
-	public static final String NAME="";
+	
+	public static final String NAMELOGUEO = "";
 	private Image icon;
 	private Image imgUserName;
 	private Image imgPasword;
@@ -86,8 +87,8 @@ public class Login extends CustomComponent implements View{
 				
 				if(txfUserName.getValue().equals("Diana")){
 					if(txfPasword.getValue().equals("123")){
-						navigator.addView(Administrator.NAME3, new Administrator(navigator));
-						navigator.navigateTo(Administrator.NAME3);
+						navigator.addView(Administrator.NAMEADMINISTRATOR, new Administrator(navigator));
+						navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
 //						navigator.addView(CreateUser.NAME5, new CreateUser(navigator));
 //						navigator.navigateTo(CreateUser.NAME5);
 
@@ -102,7 +103,7 @@ public class Login extends CustomComponent implements View{
 		//this.btnLogin.addStyleName("v-button-style");	
 		//this.btnLogin.addStyleName("v-ie8");	
 	
-		this.lblQuestion = new Link("¿olvido su contraseña?",new ExternalResource("#!"+Question.NAME2));
+		this.lblQuestion = new Link("¿olvido su contraseña?",new ExternalResource("#!"+Question.NAMEQUESTION));
 
 		
 		pnlLogin = new Panel();

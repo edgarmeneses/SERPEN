@@ -15,7 +15,7 @@ import com.vaadin.ui.Panel;
 public class PanelAdministrator extends Panel{
 
 
-	public static final String NAME3="Administrador";
+//	public static final String NAMEPANELA="Administrador";
 	private Image Imglogo;
 	private Panel pnlOption;
 	private Image ImgnewUser;
@@ -55,8 +55,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(CreateUser.NAME5, new CreateUser(navigator));
-				navigator.navigateTo(CreateUser.NAME5);
+				navigator.addView(CreateUser.NAMECREATE, new CreateUser(navigator));
+				navigator.navigateTo(CreateUser.NAMECREATE);
 			}
 		});
 
@@ -71,8 +71,8 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(List.NAME, new List(navigator));
-				navigator.navigateTo(List.NAME);
+				navigator.addView(List.NAMELIST, new List(navigator));
+				navigator.navigateTo(List.NAMELIST);
 			}
 		});
 		
@@ -81,13 +81,35 @@ public class PanelAdministrator extends Panel{
 		ThemeResource resource3 = new ThemeResource("../Imagen/editar.png");
 		imgEdit =new Image (null, resource3);
 		this.imgEdit.setVisible(true);
+		imgEdit.addClickListener(new ClickListener(){
 
+			@Override
+			public void click(ClickEvent event) {
+				// TODO Auto-generated method stub
+				navigator.addView(EditUsers.NAMEEDIT, new EditUsers(navigator));
+				navigator.navigateTo(EditUsers.NAMEEDIT);
+				System.out.println("hhhhh");
+			}
+			
+		});
+		
 		this.imgConfig= new Image("Configuracion");
 		ThemeResource resource4 = new ThemeResource("../Imagen/configuracion.png");
 		imgConfig =new Image (null, resource4);
 		this.imgConfig.setVisible(true);
 		this.imgConfig.setWidth("50px");
 		this.imgConfig.setHeight("50px");
+		imgConfig.addClickListener(new ClickListener(){
+
+			@Override
+			public void click(ClickEvent event) {
+				// TODO Auto-generated method stub
+				navigator.addView(Configuration.NAMECONFIGURATION, new Configuration(navigator));
+				navigator.navigateTo(Configuration.NAMECONFIGURATION);
+				System.out.println("hhhhh");
+			}
+			
+		});
 
 
 		layoutPrincipal.addComponent(Imglogo);

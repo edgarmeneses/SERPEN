@@ -10,7 +10,7 @@ public class List extends CustomComponent implements View{
 	
 	private PanelAdministrator administrator;
 	private PanelList list;
-	public static final String NAME="ListarUsuarios";
+	public static final String NAMELIST="ListarUsuarios";
 	
 	public List(Navigator navigator) {
 		HorizontalLayout layout = new HorizontalLayout();

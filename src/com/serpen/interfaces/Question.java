@@ -19,7 +19,7 @@ import com.vaadin.ui.TextField;
 
 public class Question extends  CustomComponent implements ClickListener,View {
 
-	public static final String NAME2 ="¿olvido su contraseña?";
+	public static final String NAMEQUESTION ="¿olvido su contraseña?";
 	//public static final String NAME3 ="Pregunta";
 	private Label lblDescription;
 	private Label lblDescription2;
@@ -77,8 +77,8 @@ public class Question extends  CustomComponent implements ClickListener,View {
 				// TODO Auto-generated method stub
 				if(txtUsername.getValue().equals("Diana")){
 					if(txtQuestion.getValue().equals("Sara")){
-						navigator.addView(RestorePassword.NAME4, new RestorePassword(navigator));
-						navigator.navigateTo(RestorePassword.NAME4);
+						navigator.addView(RestorePassword.NAMERESTORE, new RestorePassword(navigator));
+						navigator.navigateTo(RestorePassword.NAMERESTORE);
 					}
 				}else{
 					Notification.show("Usauario o pregunta erronea");
@@ -91,8 +91,8 @@ public class Question extends  CustomComponent implements ClickListener,View {
 
 			@Override
 			public void buttonClick(ClickEvent event) {
-				navigator.addView(Login.NAME, new Login(navigator) );
-				navigator.navigateTo(Login.NAME);
+				navigator.addView(Login.NAMELOGUEO, new Login(navigator) );
+				navigator.navigateTo(Login.NAMELOGUEO);
 			}
 		});
 

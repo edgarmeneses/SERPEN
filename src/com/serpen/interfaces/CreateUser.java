@@ -10,7 +10,7 @@ public class CreateUser extends CustomComponent implements View{
 	
 	private PanelAdministrator administrator;
 	private PanelCreateUser user;
-	public static final String NAME5="CrearUsuario"; 
+	public static final String NAMECREATE="CrearUsuario"; 
 	
 	public CreateUser(Navigator navigator) {
 		// TODO Auto-generated constructor stubd

@@ -30,7 +30,7 @@ public class RestorePassword extends CustomComponent implements View {
 	private Button btnCancel;
 	private Image  imgSecurity;
 	private Image imgPasword;
-	public static final String NAME4="Pregunta";
+	public static final String NAMERESTORE="Pregunta";
 	public Navigator navigator;
 	
 	public RestorePassword(Navigator navigator){
@@ -73,8 +73,8 @@ public class RestorePassword extends CustomComponent implements View {
 					System.out.println("Agrega la contraseña ");
 					Notification.show("Contraseña Cambiada Satisfactoriamente");
 					
-					navigator.addView(Login.NAME, new Login(navigator) );
-					navigator.navigateTo(Login.NAME);
+					navigator.addView(Login.NAMELOGUEO, new Login(navigator) );
+					navigator.navigateTo(Login.NAMELOGUEO);
 				}else{
 					txtNewPassword.setValue("");
 					txtConfirm.setValue("");
@@ -89,8 +89,8 @@ public class RestorePassword extends CustomComponent implements View {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(Login.NAME, new Login(navigator) );
-				navigator.navigateTo(Login.NAME);
+				navigator.addView(Login.NAMELOGUEO, new Login(navigator) );
+				navigator.navigateTo(Login.NAMELOGUEO);
 			}
 		});
 		

@@ -11,14 +11,16 @@ public class Configuration extends CustomComponent implements View{
 	
 	private PanelAdministrator administrator;
 	private PanelConfiguration configuration;
-	public static final String NAME="configuraciones";
+	public static final String NAMECONFIGURATION="configuraciones";
 	
 	public Configuration(Navigator navigator) {
 		// TODO Auto-generated constructor stub
 		HorizontalLayout layout = new HorizontalLayout();
 		
 		administrator = new PanelAdministrator(navigator);
-		configuration = new PanelConfiguration();
+		configuration = new PanelConfiguration(navigator);
+		
+		
 		
 		layout.addComponent(administrator);
 		layout.addComponent(configuration);

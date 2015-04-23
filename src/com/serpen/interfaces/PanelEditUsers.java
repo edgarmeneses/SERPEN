@@ -1,5 +1,8 @@
 package com.serpen.interfaces;
 
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
@@ -20,12 +23,15 @@ public class PanelEditUsers  extends Panel{
 	private Label lblNewSecurityAns;
 	private TextField txtNewSecurityAns;
 	private Panel panelEdit;
+	private Navigator navigator;
 	
-	public PanelEditUsers(){
+	public PanelEditUsers(Navigator navigator){
 		
+		this.navigator=navigator;
 		
 		FormLayout formLayoutPrin= new FormLayout();
 		formLayoutPrin.setSizeFull();
+		formLayoutPrin.beforeClientResponse(false);
 		formLayoutPrin.setVisible(true);
 		
 		panelEdit = new  Panel();
@@ -33,14 +39,14 @@ public class PanelEditUsers  extends Panel{
 		panelEdit.setHeight("300px");
 		
 		FormLayout formLayoutEdit = new FormLayout();
-		formLayoutEdit.setSizeFull();
+//		formLayoutEdit.setSizeFull();
 		formLayoutEdit.setVisible(true);
 		
 		HorizontalLayout layautPassword= new HorizontalLayout();
-	    layautPassword.setVisible(true);
+//	    layautPassword.setVisible(true);
 	    
 	    HorizontalLayout layoutSecurity = new HorizontalLayout();
-	    layoutSecurity.setVisible(true);
+//	    layoutSecurity.setVisible(true);
 	    
 	    lbLabelPrincipal = new Label("Editar Usuario");
 	    lbLabelPrincipal.setWidth("150px");
@@ -90,10 +96,8 @@ public class PanelEditUsers  extends Panel{
 		
 		panelEdit.setContent(formLayoutEdit);
 		formLayoutPrin.addComponent(panelEdit);
-		//this.setCompositionRoot(formLayoutPrin);
 		setContent(formLayoutPrin);
+		
+		//		this.setCompositionRoot(formLayoutPrin);
 	}
-	
-	
-
 }
