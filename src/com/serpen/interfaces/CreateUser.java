@@ -3,6 +3,8 @@ package com.serpen.interfaces;
 import org.eclipse.jetty.util.security.Password;
 
 import com.vaadin.annotations.Theme;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
@@ -22,7 +24,7 @@ import com.vaadin.ui.VerticalLayout;
 
 //asigna el tema a la clase que se desea modelar
 @Theme("themeCreateUser")
-public class CreateUser extends CustomComponent{
+public class CreateUser extends CustomComponent implements View{
 
 	private Label lblCreateUser;
 	private TextField txtNickname;
@@ -34,6 +36,7 @@ public class CreateUser extends CustomComponent{
 	private Button btnCancel;
 	private Panel panel;
 	private Label label;
+	public static final String NAME5="CrearUsuario.html"; 
 	public CreateUser (){
 		
 		FormLayout layoutPrincipal = new FormLayout();
@@ -102,5 +105,10 @@ public class CreateUser extends CustomComponent{
 		this.panel.setContent(layoutPanel);
 		this.setCompositionRoot(layoutPrincipal);
 	    setSizeFull();
+	}
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 }

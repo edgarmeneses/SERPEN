@@ -1,38 +1,28 @@
 package com.serpen.interfaces;
 
-import java.awt.Label;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import org.omg.CORBA.OMGVMCID;
-
-import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
-import com.vaadin.ui.AbsoluteLayout;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Panel;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Component.Event;
 
-public class Administrator extends CustomComponent implements View, ClickListener{
+public class A extends CustomComponent implements View{
 	
-	public static final String NAME3="Administrador";
 	private Image Imglogo;
 	private Panel pnlOption;
 	private Image ImgnewUser;
 	private Image imgList;
 	private Image imgEdit;
 	private Image imgConfig;
-	private Navigator navigator;
 	
-	public Administrator (Navigator navigator){
-		
+	private Navigator navigator;
+	public static final String name5 ="Crear usuario";
+	
+	public A() {
+		// TODO Auto-generated constructor stub
 		this.navigator=navigator;
 		FormLayout layoutPrincipal = new FormLayout();
 		layoutPrincipal.setSizeFull();
@@ -57,7 +47,7 @@ public class Administrator extends CustomComponent implements View, ClickListene
 		this.ImgnewUser = new Image("User");
 		ThemeResource resource1 = new ThemeResource("../Imagen/crear.png");
 		ImgnewUser =new Image (null, resource1);
-		ImgnewUser.addClickListener(this);
+		//ImgnewUser.addClickListener(this);
 		
 		this.ImgnewUser.setVisible(true);
 		
@@ -91,21 +81,14 @@ public class Administrator extends CustomComponent implements View, ClickListene
 		this.setCompositionRoot(layoutPrincipal);
 		
 		this.setSizeFull();
-			
 	}
+
 
 	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
-		// TODO Auto-generated method stub
-		navigator.addView(CreateUser.NAME5, new CreateUser());
-		navigator.navigateTo(CreateUser.NAME5);
-	}
-
+	
 
 }

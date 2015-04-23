@@ -86,8 +86,11 @@ public class Login extends CustomComponent implements View{
 				
 				if(txfUserName.getValue().equals("Diana")){
 					if(txfPasword.getValue().equals("123")){
-						navigator.addView(Administrator.NAME3, new Administrator(navigator));
-						navigator.navigateTo(Administrator.NAME3);
+						//navigator.addView(Administrator.NAME3, new Administrator(navigator));
+						//navigator.navigateTo(Administrator.NAME3);
+						navigator.addView(A.name5, new A());
+						navigator.navigateTo(A.name5);
+
 
 					}
 				}else{
