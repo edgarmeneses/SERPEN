@@ -12,22 +12,25 @@ import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
+import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.Button.ClickEvent;
 
 public class RestorePassword extends CustomComponent implements View {
 	
 	private Label lblLogo;
 	private Label lblNewPassword;
 	private Label lblConfirm;
-	private TextField txtNewPassword;
-	private TextField txtConfirm;
+	private PasswordField txtNewPassword;
+	private PasswordField txtConfirm;
 	private Button btnConfirm;
 	private Panel pnlMain;
 	private Button btnCancel;
 	private Image  imgSecurity;
 	private Image imgPasword;
-	public static final String NAME2="Pregunta";
+	public static final String NAME4="Pregunta";
 	public Navigator navigator;
 	
 	public RestorePassword(Navigator navigator){
@@ -56,12 +59,40 @@ public class RestorePassword extends CustomComponent implements View {
 		lblLogo = new Label("LOGO");
 		lblNewPassword = new Label("Falta imagen");
 		
-		txtNewPassword = new TextField("Nueva Contraseña");
+		txtNewPassword = new PasswordField("Nueva Contraseña");
 		lblConfirm = new Label("Falta imagen");
-		txtConfirm = new TextField("Confirmar Constraseña");
+		txtConfirm = new PasswordField("Confirmar Constraseña");
 		
 		btnConfirm = new Button("Confirmar");
+		btnConfirm.addClickListener(new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				if(txtNewPassword.getValue().equals(txtConfirm.getValue())){
+					System.out.println("Agrega la contraseña ");
+					Notification.show("Contraseña Cambiada Satisfactoriamente");
+					
+					navigator.addView(Login.NAME, new Login(navigator) );
+					navigator.navigateTo(Login.NAME);
+				}else{
+					txtNewPassword.setValue("");
+					txtConfirm.setValue("");
+					Notification.show("Las contraseñas no coinciden");
+				}
+			}
+		});
+		
 		btnCancel = new Button("Cancelar");
+		btnCancel.addClickListener(new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				navigator.addView(Login.NAME, new Login(navigator) );
+				navigator.navigateTo(Login.NAME);
+			}
+		});
 		
 		this.imgPasword = new Image("password");
 		ThemeResource resource1 = new ThemeResource("../Imagen/passwords.jpg");

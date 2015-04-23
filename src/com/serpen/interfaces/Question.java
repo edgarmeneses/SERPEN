@@ -19,8 +19,8 @@ import com.vaadin.ui.TextField;
 
 public class Question extends  CustomComponent implements ClickListener,View {
 
-	public static final String NAME ="¿olvido su contraseña?";
-	public static final String NAME2 ="Pregunta";
+	public static final String NAME2 ="¿olvido su contraseña?";
+	//public static final String NAME3 ="Pregunta";
 	private Label lblDescription;
 	private Label lblDescription2;
 	private Image UserName;
@@ -28,83 +28,97 @@ public class Question extends  CustomComponent implements ClickListener,View {
 	private Image question;
 	private TextField txtQuestion;
 	private Button btnAccept;
+	private Button btnCancel;
 	private Panel panel;
 	private Navigator navigator;
-	
+
 	public Question(Navigator navigator){
-		
+
 		this.navigator=navigator;
 		FormLayout layoutPrincipal = new FormLayout();
 		layoutPrincipal.setSizeFull();
 		layoutPrincipal.beforeClientResponse(false);
 		layoutPrincipal.setVisible(true);
-		
+
 		FormLayout layoutPanel = new FormLayout();
-//		layoutPanel.setWidth("500px");
-//		layoutPanel.setHeight("500px");
+		//		layoutPanel.setWidth("500px");
+		//		layoutPanel.setHeight("500px");
 		layoutPanel.setVisible(true);
-		
-	
+
+
 		HorizontalLayout layoutDescription1 = new HorizontalLayout();
-		
+
 		lblDescription = new Label("Para poder recuperar su constraseña por favor ingrese");
-		
+
 		HorizontalLayout layoutDescription2 = new HorizontalLayout();
-		
+
 		lblDescription2 = new Label(" la respuesta de la siguiente pregunta");
-		
+
 		HorizontalLayout layoutUser = new HorizontalLayout();
-		
+
 		ThemeResource resource = new ThemeResource("../Imagen/user.png");
 		UserName = new Image(null, resource);
 		this.UserName.setVisible(true);
 		txtUsername = new TextField("Usuario:");
-		
+
 		HorizontalLayout layoutTeacher = new HorizontalLayout();
-		
+
 		ThemeResource resource2 = new ThemeResource("../Imagen/profesor.jpg");
 		question = new Image(null, resource2);
 		this.question.setVisible(true);
 		txtQuestion = new TextField("Nombre de su profesor favorito?");
-		
+
 		HorizontalLayout layoutEvent = new HorizontalLayout();
 		btnAccept = new Button("Aceptar");
 		btnAccept.addClickListener(new Button.ClickListener() {
-			
+
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				if(txtUsername.getValue().equals("Diana")){
 					if(txtQuestion.getValue().equals("Sara")){
+						navigator.addView(RestorePassword.NAME4, new RestorePassword(navigator));
+						navigator.navigateTo(RestorePassword.NAME4);
+					}
+				}else{
+					Notification.show("Usauario o pregunta erronea");
 				}
-			}else{
-				Notification.show("Usauario o pregunta erronea");
 			}
-		}
 		});
-	
+
+		btnCancel = new Button("Cancelar");
+		btnCancel.addClickListener(new Button.ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				navigator.addView(Login.NAME, new Login(navigator) );
+				navigator.navigateTo(Login.NAME);
+			}
+		});
+
 		panel = new Panel();
 		panel.setSizeFull();
 		panel.setWidth("500px");
 		panel.setHeight("500px");
-		
+
 		layoutDescription1.addComponent(lblDescription);
 		layoutDescription2.addComponent(lblDescription2);
-		
+
 		layoutUser.addComponent(UserName);
 		layoutUser.addComponent(txtUsername);
-		
+
 		layoutTeacher.addComponent(question);
 		layoutTeacher.addComponent(txtQuestion);
-		
+
 		layoutEvent.addComponent(btnAccept);
-		
+		layoutEvent.addComponent(btnCancel);
+
 		layoutPanel.addComponent(layoutDescription1);
 		layoutPanel.addComponent(layoutDescription2);	
 		layoutPanel.addComponent(layoutUser);
 		layoutPanel.addComponent(layoutTeacher);
 		layoutPanel.addComponent(layoutEvent);
-		
+
 		layoutPrincipal.addComponent(panel);
 		this.panel.setContent(layoutPanel);
 		this.setCompositionRoot(layoutPrincipal);
@@ -114,12 +128,12 @@ public class Question extends  CustomComponent implements ClickListener,View {
 	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void buttonClick(ClickEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}	
 }

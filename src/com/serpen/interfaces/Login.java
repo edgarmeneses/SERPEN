@@ -20,10 +20,9 @@ import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickListener;
 
-public class Login extends CustomComponent implements View, ClickListener{
+public class Login extends CustomComponent implements View{
 	
 	public static final String NAME="";
-	public static final String NAME3="Administrador";
 	private Image icon;
 	private Image imgUserName;
 	private Image imgPasword;
@@ -87,18 +86,20 @@ public class Login extends CustomComponent implements View, ClickListener{
 				
 				if(txfUserName.getValue().equals("Diana")){
 					if(txfPasword.getValue().equals("123")){
+						navigator.addView(Administrator.NAME3, new Administrator(navigator));
 						navigator.navigateTo(Administrator.NAME3);
+
 					}
 				}else{
 					Notification.show("Usauario o cotraseña no registrado");
 				}
 			}
 		});
-		btnLogin.addClickListener(this);
+		//btnLogin.addClickListener(this);
 		//this.btnLogin.addStyleName("v-button-style");	
 		//this.btnLogin.addStyleName("v-ie8");	
 	
-		this.lblQuestion = new Link("¿olvido su contraseña?",new ExternalResource("#!"+Question.NAME));
+		this.lblQuestion = new Link("¿olvido su contraseña?",new ExternalResource("#!"+Question.NAME2));
 
 		
 		pnlLogin = new Panel();
@@ -127,21 +128,21 @@ public class Login extends CustomComponent implements View, ClickListener{
 		
 	}
 
-	@Override
-	public void buttonClick(ClickEvent event) {
-		// TODO Auto-generated method stub
-		if (event.getComponent().equals(lblQuestion)){
-			
-			Question q = new Question(navigator);
-			navigator.addView(Question.NAME, Question.class);
-			
-			AbsoluteLayout layout= new AbsoluteLayout();
-			layout.addComponent(q);
-			
-			setCompositionRoot(layout);
-			setSizeFull();
-		}
-	}
+//	@Override
+//	public void buttonClick(ClickEvent event) {
+//		// TODO Auto-generated method stub
+//		if (event.getComponent().equals(lblQuestion)){
+//			
+//			Question q = new Question(navigator);
+//			navigator.addView(Question.NAME2, Question.class);
+//			
+//			AbsoluteLayout layout= new AbsoluteLayout();
+//			layout.addComponent(q);
+//			
+//			setCompositionRoot(layout);
+//			setSizeFull();
+//		}
+//	}
 
 	@Override
 	public void enter(ViewChangeEvent event) {

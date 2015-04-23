@@ -7,6 +7,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.AbsoluteLayout;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Image;
@@ -49,6 +50,7 @@ public class Administrator extends CustomComponent implements View{
 		this.ImgnewUser = new Image("User");
 		ThemeResource resource1 = new ThemeResource("../Imagen/crear.png");
 		ImgnewUser =new Image (null, resource1);
+		ImgnewUser.addClickListener(new Im);
 		this.ImgnewUser.setVisible(true);
 		
 		this.imgList= new Image("User");

@@ -31,9 +31,13 @@ public class SerpenpruebaUI extends UI implements ClickListener {
 		
 		Navigator navigator = new Navigator(this, this);
 		navigator.addView(Login.NAME, new Login(navigator) );
-		navigator.addView(Question.NAME, new Question(navigator));
-		navigator.addView(Administrator.NAME3, new Administrator(navigator));
-		navigator.addView(RestorePassword.NAME2, new RestorePassword(navigator));
+		navigator.addView(Question.NAME2, new Question(navigator));
+		//navigator.addView(Administrator.NAME3, new Administrator(navigator));
+		//navigator.addView(RestorePassword.NAME4, new RestorePassword(navigator));
+//		navigator.addView(Login.NAME, new Login(navigator) );
+//		navigator.addView(Question.NAME, new Question(navigator));
+//		navigator.addView(Administrator.NAME3, new Administrator(navigator));
+		
 //		CreateUser createUser = new CreateUser();
 //		layout.addComponent(createUser);
 		
