@@ -86,15 +86,15 @@ public class Login extends CustomComponent implements View{
 				
 				if(txfUserName.getValue().equals("Diana")){
 					if(txfPasword.getValue().equals("123")){
-						//navigator.addView(Administrator.NAME3, new Administrator(navigator));
-						//navigator.navigateTo(Administrator.NAME3);
-						navigator.addView(A.name5, new A());
-						navigator.navigateTo(A.name5);
+						navigator.addView(Administrator.NAME3, new Administrator(navigator));
+						navigator.navigateTo(Administrator.NAME3);
+//						navigator.addView(CreateUser.NAME5, new CreateUser(navigator));
+//						navigator.navigateTo(CreateUser.NAME5);
 
 
 					}
 				}else{
-					Notification.show("Usauario o cotraseña no registrado");
+					Notification.show("Usuario o cotraseña no registrado");
 				}
 			}
 		});

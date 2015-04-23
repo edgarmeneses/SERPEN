@@ -6,19 +6,21 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
 
-public class List extends CustomComponent implements View{
+public class EditUsers extends CustomComponent implements View{
 	
 	private PanelAdministrator administrator;
-	private PanelList list;
-	public static final String NAME="ListarUsuarios";
+	private PanelEditUsers editUsers;
+	public static final String NAME="EditarUsuario";
 	
-	public List(Navigator navigator) {
+	public EditUsers(Navigator navigator) {
 		HorizontalLayout layout = new HorizontalLayout();
 		
 		administrator = new PanelAdministrator(navigator);
-		list = new PanelList(navigator);
+		editUsers = new PanelEditUsers();
+		
 		layout.addComponent(administrator);
-		layout.addComponent(list);
+		layout.addComponent(editUsers);
+		
 		setCompositionRoot(layout);
 		setSizeFull();
 	}

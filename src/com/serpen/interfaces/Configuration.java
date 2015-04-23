@@ -5,20 +5,24 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Panel;
 
-public class List extends CustomComponent implements View{
+public class Configuration extends CustomComponent implements View{
 	
 	private PanelAdministrator administrator;
-	private PanelList list;
-	public static final String NAME="ListarUsuarios";
+	private PanelConfiguration configuration;
+	public static final String NAME="configuraciones";
 	
-	public List(Navigator navigator) {
+	public Configuration(Navigator navigator) {
+		// TODO Auto-generated constructor stub
 		HorizontalLayout layout = new HorizontalLayout();
 		
 		administrator = new PanelAdministrator(navigator);
-		list = new PanelList(navigator);
+		configuration = new PanelConfiguration();
+		
 		layout.addComponent(administrator);
-		layout.addComponent(list);
+		layout.addComponent(configuration);
+		
 		setCompositionRoot(layout);
 		setSizeFull();
 	}
