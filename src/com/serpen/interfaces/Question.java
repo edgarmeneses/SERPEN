@@ -1,6 +1,8 @@
 package com.serpen.interfaces;
 
+import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
+import com.serpen.persistence.control.ControlUser;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -79,9 +81,12 @@ public class Question extends  CustomComponent implements ClickListener,View {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
+				//este usuario se obtiene atravez de una consulta segun el usuario
+				//ingresado en el capo txtUserName simila a como se hizo en logueo
+				User user=null;
 				if(txtUsername.getValue().equals("Diana")){
 					if(txtQuestion.getValue().equals("Sara")){
-						navigator.addView(RestorePassword.NAMERESTORE, new RestorePassword(navigator,control));
+						navigator.addView(RestorePassword.NAMERESTORE, new RestorePassword(navigator,control,user));
 						navigator.navigateTo(RestorePassword.NAMERESTORE);
 					}
 				}else{

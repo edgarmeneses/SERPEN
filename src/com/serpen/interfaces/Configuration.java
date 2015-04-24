@@ -1,5 +1,9 @@
 package com.serpen.interfaces;
 
+import java.util.ResourceBundle.Control;
+
+import com.serpen.logic.entity.User;
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -14,12 +18,12 @@ public class Configuration extends CustomComponent implements View{
 	private PanelConfiguration configuration;
 	public static final String NAMECONFIGURATION="configuraciones";
 	
-	public Configuration(Navigator navigator) {
+	public Configuration(Navigator navigator, User user, ControlGeneral control) {
 		// TODO Auto-generated constructor stub
 		HorizontalLayout layout = new HorizontalLayout();
 		
-		administrator = new PanelAdministrator(navigator);
-		configuration = new PanelConfiguration(navigator);
+		administrator = new PanelAdministrator(navigator, user,control);
+		configuration = new PanelConfiguration(navigator, user,control);
 		
 		
 		

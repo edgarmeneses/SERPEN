@@ -2,6 +2,7 @@ package com.serpen.persistence.control;
 
 import java.util.List;
 
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -9,6 +10,7 @@ import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.Role;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.conf.HibernateUtil;
+import com.vaadin.ui.Notification;
 /**
  * Clase que permite controlar las acciones de la clase Usuario.java
  * @author Edgar Meneses
@@ -92,28 +94,28 @@ public class ControlUser {
 	public List<User> listByRol(Role rol) throws ErrorConnection{
 		//try{
 		System.out.println("from usuario " +
-					"in class com.serpen.logic.entity.User "
-					+ "where com.serpen.logic.User.rol.id = "+3);
-			List<User> listaUsuario = session.createQuery(
-					"from usuario " +
-					"in class com.serpen.logic.entity.User "
-					+ "where User.rol.id = "+ rol.getId()).list();
-					//).list();
-			
-			
-			for (User user : listaUsuario) {
-				System.out.println(user);
-			}
+				"in class com.serpen.logic.entity.User "
+				+ "where com.serpen.logic.User.rol.id = "+3);
+		List<User> listaUsuario = session.createQuery(
+				"from usuario " +
+						"in class com.serpen.logic.entity.User "
+						+ "where User.rol.id = "+ rol.getId()).list();
+		//).list();
 
-//			if(!listaUsuario.isEmpty()){
-				return listaUsuario;
-//			}else{
-//				throw new ErrorConnection("no hay usuarios con el rol seleccionado");
-//			}
-//		}catch(Exception e){
-//			throw new ErrorConnection("No se pudo realizar la coneccion"
-//					+ " Causa: "+ e.getCause());
-//		}
+
+		for (User user : listaUsuario) {
+			System.out.println(user);
+		}
+
+		//			if(!listaUsuario.isEmpty()){
+		return listaUsuario;
+		//			}else{
+		//				throw new ErrorConnection("no hay usuarios con el rol seleccionado");
+		//			}
+		//		}catch(Exception e){
+		//			throw new ErrorConnection("No se pudo realizar la coneccion"
+		//					+ " Causa: "+ e.getCause());
+		//		}
 	}
 	/**
 	 * metodo para consultar un usuario segun su nickname
@@ -132,7 +134,8 @@ public class ControlUser {
 				throw new ErrorConnection("No hay datos para el usuario"
 						+ " " +user.getNickname());
 			}
-		}catch(Exception e){
+		}
+		catch(Exception e){
 			throw new ErrorConnection("No se pudo realizar la conecion");
 		}
 	}
@@ -161,7 +164,7 @@ public class ControlUser {
 	 */
 	public void remove(int nickname) throws ErrorConnection{
 		try{
-           // Transaction transaction = session.beginTransaction();
+			// Transaction transaction = session.beginTransaction();
 			User user = consult(nickname);
 			System.out.println(user);
 			ControlHistoryUser controlHistoryUser = new ControlHistoryUser(session, transaction);

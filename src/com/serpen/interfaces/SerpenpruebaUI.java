@@ -22,7 +22,7 @@ import com.vaadin.ui.UI;
 //
 
 @Theme("Login")
-public class SerpenpruebaUI extends UI implements ClickListener {
+public class SerpenpruebaUI extends UI{
 
 	public Button button;
 	
@@ -33,55 +33,31 @@ public class SerpenpruebaUI extends UI implements ClickListener {
 
 	@Override
 	protected void init(VaadinRequest request) {
-		
+		//creacin de la sesion de hibernate para conectar los mapeos con la base da datos
 		Session sesion = HibernateUtil.getSessionFactory().openSession();
+		/*se utiliza cuando la consulta necesita una trasnaccion es decir para
+		 * consultas tipo insert, update, delete
+		 */
 		Transaction transaction = sesion.beginTransaction();
+		/*
+		 * clase control general que permite manejar los metodos de insert, delete, update,
+		 * select... de cada tabla
+		 */
 		ControlGeneral control = new ControlGeneral(sesion,transaction);
 		
+		/*
+		 * navegator se utiliza para crear las navegaciones entre las paginas
+		 */
 		Navigator navigator = new Navigator(this, this);
+		/*
+		 * se esta creando la pagina logue y se esta agregando como navegacion
+		 * 
+		 * para la clase question se hace la creacion de la ventana y se agrega su navegacion
+		 * al inicar dado que es un link
+		 */
 		navigator.addView(Login.NAMElOGUEO, new Login(navigator, control) );
 		navigator.addView(Question.NAMEQUESTION, new Question(navigator, control));
-		//navigator.addView(RestorePassword.NAME4, new RestorePassword(navigator,control));
-		//navigator.addView(Administrator.NAME3, new Administrator(navigator));
-		//navigator.addView(RestorePassword.NAME4, new RestorePassword(navigator));
-//		navigator.addView(Login.NAME, new Login(navigator) );
-//		navigator.addView(Question.NAME, new Question(navigator));
-//		navigator.addView(Administrator.NAME3, new Administrator(navigator));
-		
-//		CreateUser createUser = new CreateUser();
-//		layout.addComponent(createUser);
-		
-//		RestorePassword restorePassword = new RestorePassword();
-//		layout.addComponent(restorePassword);
-		
-		//layout.addComponent(new Label("Prueba..."));
-//		Logue logue = new Logue();
-//		layout.addComponent(logue);
 
-//		Login login = new Login();
-//		layout.addComponent(login);
-//	
-//		Question question = new Question();
-//		layout.addComponent(question);
-//		
-//		Administrator administrator= new Administrator();
-//		layout.addComponent(administrator);
-		
-//		List list = new List();
-//		layout.addComponent(list);
-		
-		
-//		
-		
-		//setContent(new Logue());
-	}
-
-	@Override
-	public void buttonClick(ClickEvent event) {
-		// TODO Auto-generated method stub
-		button.setCaption("clic");
-		Navigator navigator = new Navigator(this, this);
-		Navigator navigator2 = new Navigator(this, this);	
 	}
 
 }

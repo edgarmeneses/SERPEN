@@ -1,6 +1,7 @@
 package com.serpen.interfaces;
 
 
+import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
@@ -31,12 +32,14 @@ public class RestorePassword extends CustomComponent implements View {
 	private Button btnCancel;
 	private Image  imgSecurity;
 	private Image imgPasword;
-	public static final String NAMERESTORE="Pregunta";
 	
 	private Navigator navigator;
 	private ControlGeneral control;
+	private User user;
 	
-	public RestorePassword(Navigator navigator, ControlGeneral control){
+	public static final String NAMERESTORE="Pregunta";
+	
+	public RestorePassword(Navigator navigator, ControlGeneral control, User user){
 		
 		this.navigator=navigator;
 		this.control=control;

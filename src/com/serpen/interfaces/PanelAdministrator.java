@@ -1,6 +1,8 @@
 package com.serpen.interfaces;
 
 
+import com.serpen.logic.entity.User;
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.event.MouseEvents.ClickEvent;
 import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.navigator.Navigator;
@@ -23,10 +25,13 @@ public class PanelAdministrator extends Panel{
 	private Image imgEdit;
 	private Image imgConfig;
 	private Navigator navigator;
-
-	public PanelAdministrator (Navigator navigator){
+	private User user;
+	private ControlGeneral control;
+	public PanelAdministrator (Navigator navigator, User user, ControlGeneral control){
 
 		this.navigator=navigator;
+		this.control= control;
+		
 		FormLayout layoutPrincipal = new FormLayout();
 		layoutPrincipal.setSizeFull();
 		layoutPrincipal.setVisible(true);
@@ -55,7 +60,7 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(CreateUser.NAMECREATE, new CreateUser(navigator));
+				navigator.addView(CreateUser.NAMECREATE, new CreateUser(navigator,user,control));
 				navigator.navigateTo(CreateUser.NAMECREATE);
 			}
 		});
@@ -71,7 +76,7 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(List.NAMELIST, new List(navigator));
+				navigator.addView(List.NAMELIST, new List(navigator, user,control));
 				navigator.navigateTo(List.NAMELIST);
 			}
 		});
@@ -86,7 +91,7 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(EditUsers.NAMEEDIT, new EditUsers(navigator));
+				navigator.addView(EditUsers.NAMEEDIT, new EditUsers(navigator, user,control));
 				navigator.navigateTo(EditUsers.NAMEEDIT);
 				System.out.println("hhhhh");
 			}
@@ -104,7 +109,7 @@ public class PanelAdministrator extends Panel{
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(Configuration.NAMECONFIGURATION, new Configuration(navigator));
+				navigator.addView(Configuration.NAMECONFIGURATION, new Configuration(navigator,user,control));
 				navigator.navigateTo(Configuration.NAMECONFIGURATION);
 				System.out.println("hhhhh");
 			}

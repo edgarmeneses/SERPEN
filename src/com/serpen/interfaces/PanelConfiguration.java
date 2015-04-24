@@ -1,5 +1,7 @@
 package com.serpen.interfaces;
 
+import com.serpen.logic.entity.User;
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -29,11 +31,14 @@ public class PanelConfiguration  extends Panel{
 	private Navigator navigator;
 	private Button btnAccept;
 	private Button  btnCancel;
+	private User user;
+	private ControlGeneral control;
 	
-	
-	public PanelConfiguration(Navigator navigator){
+	public PanelConfiguration(Navigator navigator, User user, ControlGeneral control){
 		
 		this.navigator=navigator;
+		this.user = user;
+		this.control=control;
 		
 		FormLayout formLayoutPrin= new FormLayout();
 		formLayoutPrin.setSizeFull();
@@ -129,6 +134,13 @@ public class PanelConfiguration  extends Panel{
 		panelEdit.setContent(formLayoutEdit);
 		formLayoutPrin.addComponent(panelEdit);
 		setContent(formLayoutPrin);
+	}
+	/**
+	 * metodo que permite cambiar la informacion del usuario que ingreso a la plataforma
+	 * permite cambiar su contraseña y su respuesta de seguridad
+	 */
+	private void changeInform(){
+		
 	}
 
 }

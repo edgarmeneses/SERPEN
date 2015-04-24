@@ -2,6 +2,7 @@ package com.serpen.interfaces;
 
 import org.eclipse.jetty.util.security.Password;
 
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
@@ -40,10 +41,13 @@ public class PanelCreateUser extends Panel implements View{
 	private Panel panel;
 	private Label label;
 	private Navigator navigator;
+	private ControlGeneral control;
 	
-	public PanelCreateUser (Navigator navigator){
+	public PanelCreateUser (Navigator navigator, ControlGeneral control){
 		
 		this.navigator = navigator;
+		this.control=control;
+		
 		FormLayout layoutPrincipal = new FormLayout();
 		layoutPrincipal.setSizeFull();
 		layoutPrincipal.beforeClientResponse(false);

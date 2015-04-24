@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -32,10 +33,11 @@ public class PanelEditUsers  extends Panel{
 	private Label lblSearch;
 	private TextField txtSearch;
 	private Button btnSearch;
-	
-	public PanelEditUsers(Navigator navigator){
+	private ControlGeneral control;
+	public PanelEditUsers(Navigator navigator, ControlGeneral control){
 		
 		this.navigator=navigator;
+		this.control=control;
 		
 		FormLayout formLayoutPrin= new FormLayout();
 		formLayoutPrin.setSizeFull();

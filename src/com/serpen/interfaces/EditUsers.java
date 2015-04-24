@@ -1,5 +1,7 @@
 package com.serpen.interfaces;
 
+import com.serpen.logic.entity.User;
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -12,12 +14,12 @@ public class EditUsers extends CustomComponent implements View{
 	private PanelEditUsers editUsers;
 	public static final String NAMEEDIT="EditarUsuario";
 	
-	public EditUsers(Navigator navigator) {
+	public EditUsers(Navigator navigator, User user, ControlGeneral control) {
 		
 		HorizontalLayout layout = new HorizontalLayout();
 		
-		administrator = new PanelAdministrator(navigator);
-		editUsers = new PanelEditUsers(navigator);
+		administrator = new PanelAdministrator(navigator, user, control);
+		editUsers = new PanelEditUsers(navigator, control);
 		
 		
 		

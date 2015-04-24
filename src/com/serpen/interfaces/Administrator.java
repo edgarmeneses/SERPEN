@@ -6,6 +6,8 @@ import java.awt.event.MouseListener;
 
 import org.omg.CORBA.OMGVMCID;
 
+import com.serpen.logic.entity.User;
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
@@ -24,12 +26,16 @@ public class Administrator extends CustomComponent implements View{
 	
 	public static final String NAMEADMINISTRATOR="Administrador";
 	private PanelAdministrator paneAdministrator;
+	private User user;
+	private ControlGeneral control;
 	
-	public Administrator (Navigator navigator){	
-		paneAdministrator = new PanelAdministrator(navigator);
+	public Administrator (Navigator navigator, User user, ControlGeneral control){
+		
+		paneAdministrator = new PanelAdministrator(navigator,user,null);
 		setCompositionRoot(paneAdministrator);
 		setSizeFull();
 	}
+	
 
 	@Override
 	public void enter(ViewChangeEvent event) {

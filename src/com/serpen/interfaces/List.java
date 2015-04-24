@@ -1,5 +1,7 @@
 package com.serpen.interfaces;
 
+import com.serpen.logic.entity.User;
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -12,11 +14,11 @@ public class List extends CustomComponent implements View{
 	private PanelList list;
 	public static final String NAMELIST="ListarUsuarios";
 	
-	public List(Navigator navigator) {
+	public List(Navigator navigator, User user, ControlGeneral control) {
 		HorizontalLayout layout = new HorizontalLayout();
 		
-		administrator = new PanelAdministrator(navigator);
-		list = new PanelList(navigator);
+		administrator = new PanelAdministrator(navigator, user, control);
+		list = new PanelList(navigator, control);
 		layout.addComponent(administrator);
 		layout.addComponent(list);
 		setCompositionRoot(layout);

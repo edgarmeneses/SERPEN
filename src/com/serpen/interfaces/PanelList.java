@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
@@ -25,11 +26,13 @@ public class PanelList extends Panel{
 	private Panel pnlMenu;
 	private Panel pnlTable;
 	private Navigator navigator;
+	private ControlGeneral control;
 	
-	public PanelList(Navigator navigator){
+	public PanelList(Navigator navigator, ControlGeneral control){
 		
 		this.navigator = navigator;
-			
+		this.control = control;
+		
 		FormLayout layoutPrincipal = new FormLayout();
 		layoutPrincipal.setVisible(true);
 		
