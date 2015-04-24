@@ -17,7 +17,7 @@ import com.vaadin.ui.Button.ClickListener;
 
 public class PanelConfiguration  extends Panel{
 	
-	
+//	
 	private Label lbLabelPrincipal;
 	private Image imgPasword;
 	private Label lblNewPassword;
