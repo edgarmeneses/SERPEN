@@ -14,7 +14,7 @@ import com.vaadin.ui.Panel;
 
 public class PanelAdministrator extends Panel{
 
-
+//
 //	public static final String NAMEPANELA="Administrador";
 	private Image Imglogo;
 	private Panel pnlOption;

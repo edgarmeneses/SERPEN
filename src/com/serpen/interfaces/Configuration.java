@@ -8,7 +8,8 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Panel;
 
 public class Configuration extends CustomComponent implements View{
-	
+
+	//
 	private PanelAdministrator administrator;
 	private PanelConfiguration configuration;
 	public static final String NAMECONFIGURATION="configuraciones";
