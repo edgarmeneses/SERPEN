@@ -4,6 +4,7 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -11,6 +12,8 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 
 public class PanelConfiguration  extends Panel{
 	
@@ -24,6 +27,9 @@ public class PanelConfiguration  extends Panel{
 	private TextField txtNewSecurityAns;
 	private Panel panelEdit;
 	private Navigator navigator;
+	private Button btnAccept;
+	private Button  btnCancel;
+	
 	
 	public PanelConfiguration(Navigator navigator){
 		
@@ -35,7 +41,7 @@ public class PanelConfiguration  extends Panel{
 		
 		panelEdit = new  Panel();
 		panelEdit.setWidth("400px");
-		panelEdit.setHeight("300px");
+		panelEdit.setHeight("400px");
 		
 		FormLayout formLayoutEdit = new FormLayout();
 //		formLayoutEdit.setSizeFull();
@@ -46,6 +52,11 @@ public class PanelConfiguration  extends Panel{
 	    
 	    HorizontalLayout layoutSecurity = new HorizontalLayout();
 //	    layoutSecurity.setVisible(true);
+	    
+	    HorizontalLayout layoutBtn = new HorizontalLayout();
+	    layoutBtn.setVisible(true);
+	    
+	    
 	    
 	    lbLabelPrincipal = new Label("Editar Usuario");
 	    lbLabelPrincipal.setWidth("150px");
@@ -77,6 +88,25 @@ public class PanelConfiguration  extends Panel{
 		lblNewSecurityAns.setHeight("50px");
 		lblNewSecurityAns.setVisible(true);
 		
+		btnAccept = new Button("Aceptar");
+		btnAccept.setWidth("100px");
+		btnAccept.setHeight("50px");
+		btnAccept.setVisible(true);
+		
+		btnCancel = new Button("Cancelar");
+		btnCancel.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				//navigator.addView(Administrator.NAME3, new );
+				navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
+			}
+		});
+		btnCancel.setWidth("100px");
+		btnCancel.setHeight("50px");
+//		btnCancel.setVisible(true);
+		
 		txtNewSecurityAns = new TextField();
 		txtNewSecurityAns.setWidth("150px");
 		txtNewSecurityAns.setHeight("50px");
@@ -85,6 +115,7 @@ public class PanelConfiguration  extends Panel{
 		formLayoutEdit.addComponent(lbLabelPrincipal);
 		formLayoutEdit.addComponent(layautPassword);
 		formLayoutEdit.addComponent(layoutSecurity);
+		formLayoutEdit.addComponent(layoutBtn);
 		
 		layautPassword.addComponent(imgPasword);
 		layautPassword.addComponent(lblNewPassword);
@@ -92,6 +123,8 @@ public class PanelConfiguration  extends Panel{
 		layoutSecurity.addComponent(imgSecurity);
 		layoutSecurity.addComponent(lblNewSecurityAns);
 		layoutSecurity.addComponent(txtNewSecurityAns);
+		layoutBtn.addComponent(btnAccept);
+		layoutBtn.addComponent(btnCancel );
 		
 		panelEdit.setContent(formLayoutEdit);
 		formLayoutPrin.addComponent(panelEdit);
@@ -99,3 +132,4 @@ public class PanelConfiguration  extends Panel{
 	}
 
 }
+	
