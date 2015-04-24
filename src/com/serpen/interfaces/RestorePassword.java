@@ -1,6 +1,7 @@
 package com.serpen.interfaces;
 
 
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -31,11 +32,14 @@ public class RestorePassword extends CustomComponent implements View {
 	private Image  imgSecurity;
 	private Image imgPasword;
 	public static final String NAMERESTORE="Pregunta";
-	public Navigator navigator;
 	
-	public RestorePassword(Navigator navigator){
+	private Navigator navigator;
+	private ControlGeneral control;
+	
+	public RestorePassword(Navigator navigator, ControlGeneral control){
 		
 		this.navigator=navigator;
+		this.control=control;
 		
 		FormLayout layoutPrincipal = new FormLayout();
 
@@ -73,8 +77,8 @@ public class RestorePassword extends CustomComponent implements View {
 					System.out.println("Agrega la contraseña ");
 					Notification.show("Contraseña Cambiada Satisfactoriamente");
 					
-					navigator.addView(Login.NAMELOGUEO, new Login(navigator) );
-					navigator.navigateTo(Login.NAMELOGUEO);
+					navigator.addView(Login.NAMElOGUEO, new Login(navigator,control) );
+					navigator.navigateTo(Login.NAMElOGUEO);
 				}else{
 					txtNewPassword.setValue("");
 					txtConfirm.setValue("");
@@ -89,8 +93,8 @@ public class RestorePassword extends CustomComponent implements View {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				navigator.addView(Login.NAMELOGUEO, new Login(navigator) );
-				navigator.navigateTo(Login.NAMELOGUEO);
+				navigator.addView(Login.NAMElOGUEO, new Login(navigator,control) );
+				navigator.navigateTo(Login.NAMElOGUEO);
 			}
 		});
 		

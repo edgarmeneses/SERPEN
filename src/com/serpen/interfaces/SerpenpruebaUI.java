@@ -3,6 +3,11 @@ package com.serpen.interfaces;
 
 import javax.servlet.annotation.WebServlet;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.serpen.persistence.conf.HibernateUtil;
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
@@ -29,9 +34,14 @@ public class SerpenpruebaUI extends UI implements ClickListener {
 	@Override
 	protected void init(VaadinRequest request) {
 		
+		Session sesion = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = sesion.beginTransaction();
+		ControlGeneral control = new ControlGeneral(sesion,transaction);
+		
 		Navigator navigator = new Navigator(this, this);
-		navigator.addView(Login.NAMELOGUEO, new Login(navigator) );
-		navigator.addView(Question.NAMEQUESTION, new Question(navigator));
+		navigator.addView(Login.NAMElOGUEO, new Login(navigator, control) );
+		navigator.addView(Question.NAMEQUESTION, new Question(navigator, control));
+		//navigator.addView(RestorePassword.NAME4, new RestorePassword(navigator,control));
 		//navigator.addView(Administrator.NAME3, new Administrator(navigator));
 		//navigator.addView(RestorePassword.NAME4, new RestorePassword(navigator));
 //		navigator.addView(Login.NAME, new Login(navigator) );

@@ -1,29 +1,29 @@
 package com.serpen.interfaces;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.ThemeResource;
-import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.Button.ClickListener;
 
 public class Login extends CustomComponent implements View{
 	
-	
-	public static final String NAMELOGUEO = "";
+	public static final String NAMElOGUEO="";
 	private Image icon;
 	private Image imgUserName;
 	private Image imgPasword;
@@ -33,10 +33,13 @@ public class Login extends CustomComponent implements View{
 	private Button btnLogin;
 	private Panel pnlLogin;
 	private Navigator navigator;
+	private ControlGeneral control;
 	
-	public Login(Navigator navigator){
+	public Login(Navigator navigator, ControlGeneral control){
 		
 		this.navigator=navigator;
+		this.control = control;
+		
 		FormLayout layoutPrincipal= new FormLayout();
 		layoutPrincipal.setSizeFull();
 		layoutPrincipal.beforeClientResponse(false);
@@ -91,8 +94,7 @@ public class Login extends CustomComponent implements View{
 						navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
 //						navigator.addView(CreateUser.NAME5, new CreateUser(navigator));
 //						navigator.navigateTo(CreateUser.NAME5);
-
-
+						System.out.println("ggggg");
 					}
 				}else{
 					Notification.show("Usuario o cotraseña no registrado");

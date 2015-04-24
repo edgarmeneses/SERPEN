@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -31,10 +32,13 @@ public class Question extends  CustomComponent implements ClickListener,View {
 	private Button btnCancel;
 	private Panel panel;
 	private Navigator navigator;
+	private ControlGeneral control;
 
-	public Question(Navigator navigator){
+	public Question(Navigator navigator, ControlGeneral control){
 
 		this.navigator=navigator;
+		this.control=control;
+		
 		FormLayout layoutPrincipal = new FormLayout();
 		layoutPrincipal.setSizeFull();
 		layoutPrincipal.beforeClientResponse(false);
@@ -77,7 +81,7 @@ public class Question extends  CustomComponent implements ClickListener,View {
 				// TODO Auto-generated method stub
 				if(txtUsername.getValue().equals("Diana")){
 					if(txtQuestion.getValue().equals("Sara")){
-						navigator.addView(RestorePassword.NAMERESTORE, new RestorePassword(navigator));
+						navigator.addView(RestorePassword.NAMERESTORE, new RestorePassword(navigator,control));
 						navigator.navigateTo(RestorePassword.NAMERESTORE);
 					}
 				}else{
@@ -91,8 +95,8 @@ public class Question extends  CustomComponent implements ClickListener,View {
 
 			@Override
 			public void buttonClick(ClickEvent event) {
-				navigator.addView(Login.NAMELOGUEO, new Login(navigator) );
-				navigator.navigateTo(Login.NAMELOGUEO);
+				navigator.addView(Login.NAMElOGUEO, new Login(navigator,control) );
+				navigator.navigateTo(Login.NAMElOGUEO);
 			}
 		});
 
