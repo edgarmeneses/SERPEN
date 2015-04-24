@@ -19,21 +19,34 @@ public class TestControlGeneral {
 
 		ControlGeneral general = new ControlGeneral(sesion, transaction);
 		try {
-			//general.getUser().insert(11111, "1111", "Ninguna", general.getRole().consult(7));
-			//-----general.getUser().listByRol(general.getRole().consult(3));
-			//System.out.println(general.getUser().consult(104434));
-			//general.getRole().insert(name);
-			List<Role> list = general.getRole().list();
 			
-			for (Role rol : list) {
-				System.out.println(rol);
-			}
-			
-			List<User> users = general.getUser().list();
+			List<User> users= general.getUser().listByNickname(1049);
 			
 			for (User user : users) {
 				System.out.println(user);
 			}
+			//general.getUser().insert(11111, "1111", "Ninguna", general.getRole().consult(7));
+			//-----general.getUser().listByRol(general.getRole().consult(3));
+			//System.out.println(general.getUser().consult(104434));
+
+			//general.getRole().insert(name);
+			List<Role> list = general.getRole().list();
+			
+//			List<User> users = general.getUser().listByRol(null);
+//			
+//			for (User user : users) {
+//				System.out.println(user);
+//			}
+			
+//			for (Role rol : list) {
+//				System.out.println(rol);
+//			}
+//			
+//			List<User> users = general.getUser().list();
+//			
+//			for (User user : users) {
+//				System.out.println(user);
+//			}
 			
 			sesion.close();
 		} catch (ErrorConnection e) {

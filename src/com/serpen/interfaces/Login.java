@@ -1,6 +1,5 @@
 package com.serpen.interfaces;
 
-import org.apache.tika.parser.txt.TXTParser;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

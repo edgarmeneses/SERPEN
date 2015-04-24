@@ -2,8 +2,10 @@ package com.serpen.persistence.control;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.Role;
@@ -56,6 +58,12 @@ public class ControlRole {
 					+ " Causa: " + e.getCause());
 
 		}
+	}
+	
+	public List<Role> listRole(String name){
+		Criteria criteria = sesion.createCriteria(Role.class);
+		criteria.add(Restrictions.like("name", "%"+name+"%"));
+		return criteria.list();
 	}
 
 	public Role consult(int id) throws ErrorConnection{

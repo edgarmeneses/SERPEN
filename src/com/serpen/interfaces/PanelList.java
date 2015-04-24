@@ -96,11 +96,11 @@ public class PanelList extends Panel{
 	    table.addContainerProperty("Usuario", String.class, null);
 	    table.addContainerProperty("Rol", String.class, null);
 	    table.addContainerProperty("Estado", String.class, null);
-	    table.addContainerProperty("Control", String.class, null);
+	    table.addContainerProperty("Control", PanelControlList.class, null);
 	         
 //	    Añadir algunas otras filas utilizando addItem
-	    table.addItem(new Object[]{" ", " " , " ", " "}, 2);
-	    table.addItem(new Object[] { " " ," " , " ", " "},3);
+	    table.addItem(new Object[]{"123", "admin" , "Actico", new PanelControlList()}, 2);
+	    table.addItem(new Object[] { " " ," " , " ", new PanelControlList()},3);
 	    
 	    //Mostrar exactamente el momento contenían fila
 	    table.setPageLength(table.size());  

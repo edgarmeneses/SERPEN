@@ -7,6 +7,7 @@ public class User {
     private String answer;
     private Role rol;
     private char  estado;
+  
     public static final char TIPO_ESTADO_ACTIVO = 'A';
    
     public User() {

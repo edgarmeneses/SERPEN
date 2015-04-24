@@ -2,9 +2,12 @@ package com.serpen.persistence.control;
 
 import java.util.List;
 
+import org.atmosphere.interceptor.SSEAtmosphereInterceptor;
+import org.hibernate.Criteria;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.Role;
@@ -92,30 +95,27 @@ public class ControlUser {
 	 * @throws ErrorConnection
 	 */
 	public List<User> listByRol(Role rol) throws ErrorConnection{
-		//try{
-		System.out.println("from usuario " +
-				"in class com.serpen.logic.entity.User "
-				+ "where com.serpen.logic.User.rol.id = "+3);
-		List<User> listaUsuario = session.createQuery(
-				"from usuario " +
-						"in class com.serpen.logic.entity.User "
-						+ "where User.rol.id = "+ rol.getId()).list();
-		//).list();
+		try{
+		String sql = "from com.serpen.logic.entity.User u " +
+				 "WHERE u.rol.id = "+ 4;
+		
+		List<User> listaUsuario = session.createQuery(sql).list();
 
-
-		for (User user : listaUsuario) {
-			System.out.println(user);
-		}
-
-		//			if(!listaUsuario.isEmpty()){
 		return listaUsuario;
-		//			}else{
-		//				throw new ErrorConnection("no hay usuarios con el rol seleccionado");
-		//			}
-		//		}catch(Exception e){
-		//			throw new ErrorConnection("No se pudo realizar la coneccion"
-		//					+ " Causa: "+ e.getCause());
-		//		}
+		}catch(Exception e){
+			throw new ErrorConnection("No se pudo realizar la consulta"
+					+ " Causa: "+e.getCause());
+		}
+	}
+	
+	public List<User> listByNickname(int nickname){
+		String sql="from com.serpen.logic.entity.User u "
+				+ "WHERE u.nickname LIKE %"+nickname+"%";
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.like("answer", "%D%"));
+		//List<User> users =  session.createQuery(sql).list();
+		return criteria.list();
+		
 	}
 	/**
 	 * metodo para consultar un usuario segun su nickname
