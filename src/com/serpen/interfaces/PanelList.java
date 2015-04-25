@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.Role;
+import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.Button;
@@ -17,8 +18,11 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
+
 import java.util.Collection;
 import java.util.List;
+
+import org.apache.bcel.generic.RETURN;
 
 public class PanelList extends Panel{
 
@@ -84,6 +88,19 @@ public class PanelList extends Panel{
 		btnSearch.setHeight("50px");
 		btnSearch.setVisible(true);
 
+		btnSearch.addClickListener(new ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+
+				System.out.println(boxRol.getInputPrompt());
+				System.out.println(boxRol.getValue().toString());
+			}
+
+
+		});
+
 		btnReturn= new  Button("Regresar");
 		btnReturn.setWidth("150px");
 		btnReturn.setHeight("50px");
@@ -106,10 +123,10 @@ public class PanelList extends Panel{
 		table.addContainerProperty("Rol", String.class, null);
 		table.addContainerProperty("Estado", String.class, null);
 		table.addContainerProperty("Control", PanelControlList.class, null);
-
+		fillTable();
 		//	    Añadir algunas otras filas utilizando addItem
-		table.addItem(new Object[]{"123", "admin" , "Actico", new PanelControlList()}, 2);
-		table.addItem(new Object[] { " " ," " , " ", new PanelControlList()},3);
+//		table.addItem(new Object[]{"123", "admin" , "Actico", new PanelControlList()}, 2);
+//		table.addItem(new Object[] { " " ," " , " ", new PanelControlList()},3);
 
 		//Mostrar exactamente el momento contenían fila
 		table.setPageLength(table.size());  
@@ -155,6 +172,8 @@ public class PanelList extends Panel{
 
 			}
 
+
+
 			//			list.add("Seleccionar Rol ");
 
 		} catch (ErrorConnection e) {
@@ -165,12 +184,38 @@ public class PanelList extends Panel{
 		return list;
 
 	}
-	
-	public Object[] fillTable(){
-		return null;
-		
-	}
-	
-}
 
+	public Object[] fillRow(User user){
+		return new Object[]{user.getNickname()+"", user.getRol().getName(), user.getstate(), new PanelControlList()};
+
+	}
+
+	/**
+	 * Para consultar los usuarios que hay en la base de datos 
+	 * @return
+	 */
+	public void fillTable(){
+		
+	
+		
+		try {
+			List<User> list = control.getUser().list();
+
+		
+		for (int i=0;i<list.size();i++) {
+			
+			this.table.addItem(fillRow(list.get(i)),i);
+		}
+		
+		System.out.println("lista...."+list);
+	
+//		System.out.println(table);
+	} catch (ErrorConnection e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+
+}
+}
 

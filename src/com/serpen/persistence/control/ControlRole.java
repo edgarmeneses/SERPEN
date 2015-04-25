@@ -90,12 +90,12 @@ public class ControlRole {
 			role = (Role) sesion.load(Role.class,name);
 			System.out.println(role);
 			//		sesion.close();
-			if(role != null){
+//			if(role != null){
 				return role;
-			}
-			else{
-				throw new ErrorConnection("no se encnto ningun rol");
-			}
+//			}
+//			else{
+//				throw new ErrorConnection("no se encnto ningun rol");
+//			}
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo realizar la conexion "
 					+ "Causa: " + e.getCause());
@@ -155,13 +155,13 @@ public class ControlRole {
 
 		try {
 
-			rol.list();
+//			rol.list();
 
 			//        	rol.remove("Diana");
 			//        	rol.list();
 			//			rol.insert("Felipe");
 			//        	rol.consult(2);
-			//        	rol.consultName("Diana");------> malll 
+			        	rol.consultName("Usuario");
 			//rol.upDate(2, "NNNN");
 			//sesion.close();
 

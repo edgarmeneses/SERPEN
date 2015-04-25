@@ -8,6 +8,7 @@ public class User {
     private Role rol;
     private char  estado;
   
+  
     public static final char TIPO_ESTADO_ACTIVO = 'A';
    
     public User() {
@@ -72,7 +73,15 @@ public class User {
 				+ ", estado=" + estado + "]";
 	}
 
-
+	public String getstate(){
+		if(estado == 'A'){
+			
+			return "Activo";
+		}else{
+			return "Inactive";
+		}
+			
+	}
    
    
 }
