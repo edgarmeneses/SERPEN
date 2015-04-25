@@ -125,8 +125,8 @@ public class PanelList extends Panel{
 		table.addContainerProperty("Control", PanelControlList.class, null);
 		fillTable();
 		//	    Añadir algunas otras filas utilizando addItem
-//		table.addItem(new Object[]{"123", "admin" , "Actico", new PanelControlList()}, 2);
-//		table.addItem(new Object[] { " " ," " , " ", new PanelControlList()},3);
+		//		table.addItem(new Object[]{"123", "admin" , "Actico", new PanelControlList()}, 2);
+		//		table.addItem(new Object[] { " " ," " , " ", new PanelControlList()},3);
 
 		//Mostrar exactamente el momento contenían fila
 		table.setPageLength(table.size());  
@@ -199,27 +199,49 @@ public class PanelList extends Panel{
 	 * @return
 	 */
 	public void fillTable(){
-		
-	
-		
+
+
+
 		try {
-			List<User> list = control.getUser().list();
-
-		
-		for (int i=0;i<list.size();i++) {
+//			Role role= control.getRole().consultName(boxRol.getValue().toString());
+			List<User> list = control.getUser().list(stateNickname(), stateRole(), txtUser.getValue(), txtUser.getValue().toString(),
+					control.getRole());
 			
-			this.table.addItem(fillRow(list.get(i)),i);
-		}
-		
-		System.out.println("lista...."+list);
-	
-//		System.out.println(table);
-	} catch (ErrorConnection e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-		
 
-}
+			for (int i=0;i<list.size();i++) {
+
+				this.table.addItem(fillRow(list.get(i)),i);
+			}
+
+			System.out.println("lista...."+list);
+
+			//		System.out.println(table);
+		} catch (ErrorConnection e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+	}
+	 private int stateRole(){
+		 
+		 if(boxRol.getValue().equals("Seleccionar")){
+			 return 0;
+		 }else{
+			 return 1;
+		 }
+//		return 0;
+		 
+	 }
+	 
+	 private int stateNickname(){
+		 
+		 if(txtUser.getValue().equals("")){
+			 return 0;
+		 }else{
+			 return 1;
+		 }
+	 }
+	 
 }
 

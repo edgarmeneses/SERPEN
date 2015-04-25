@@ -136,17 +136,17 @@ public class ControlUser {
 		return users;
 	}
 
-	public List<User> list(int estdoNickname, int estadoRol, String nickname, Role rol) throws ErrorConnection{
+	public List<User> list(int estdoNickname, int estadoRol, String nickname, String rol,ControlRole role) throws ErrorConnection{
 		try{
 			switch (SELECT_LIST[estdoNickname][estadoRol]) {
 			case "lista":
 				return list();
 			case "rol":
-				return list(rol.getId());
+				return list(role.consultName(rol).getId());
 			case "nickname":
 				return list(nickname);
 			case "union":
-				list(nickname, rol.getName());
+				list(nickname, rol);
 				break;
 			default:
 				break;
