@@ -184,14 +184,18 @@ public class PanelList extends Panel{
 		return list;
 
 	}
-
+	/**
+	 * Para consuktar los usuarios que hay 
+	 * @param user
+	 * @return
+	 */
 	public Object[] fillRow(User user){
 		return new Object[]{user.getNickname()+"", user.getRol().getName(), user.getstate(), new PanelControlList()};
 
 	}
 
 	/**
-	 * Para consultar los usuarios que hay en la base de datos 
+	 * Agrega los usuarios a la tabla 
 	 * @return
 	 */
 	public void fillTable(){
