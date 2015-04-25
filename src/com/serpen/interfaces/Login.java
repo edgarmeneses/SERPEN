@@ -150,8 +150,8 @@ public class Login extends CustomComponent implements View{
 
 	}
 	/**
-	 * metodo que permite crear la navegacion hacia la pagina del rol que tiene el usuari
-	 * es decir permite cargar la ventana princopal para el administrador o para un usuario
+	 * metodo que permite crear la navegacion hacia la pagina del rol que tiene el usuario
+	 * es decir permite cargar la ventana principal para el administrador o para un usuario
 	 * @param user
 	 */
 	private void navigate(User user){

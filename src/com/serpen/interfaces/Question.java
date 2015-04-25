@@ -1,5 +1,10 @@
 package com.serpen.interfaces;
 
+import org.hibernate.ObjectNotFoundException;
+
+import java_cup.internal_error;
+
+import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.serpen.persistence.control.ControlUser;
@@ -40,7 +45,7 @@ public class Question extends  CustomComponent implements ClickListener,View {
 
 		this.navigator=navigator;
 		this.control=control;
-		
+
 		FormLayout layoutPrincipal = new FormLayout();
 		layoutPrincipal.setSizeFull();
 		layoutPrincipal.beforeClientResponse(false);
@@ -81,19 +86,26 @@ public class Question extends  CustomComponent implements ClickListener,View {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				//este usuario se obtiene atravez de una consulta segun el usuario
-				//ingresado en el capo txtUserName simila a como se hizo en logueo
-				User user=null;
-				if(txtUsername.getValue().equals("Diana")){
-					if(txtQuestion.getValue().equals("Sara")){
-						navigator.addView(RestorePassword.NAMERESTORE, new RestorePassword(navigator,control,user));
-						navigator.navigateTo(RestorePassword.NAMERESTORE);
+
+				try{
+					User user = control.getUser().consult(Integer.valueOf(txtUsername.getValue()));
+					System.out.println(user);
+
+					if(validateUser(user)){
+						navigate(user);
 					}
-				}else{
-					Notification.show("Usauario o pregunta erronea");
+				}catch(NumberFormatException e){
+					Notification.show("No se puede ingresar letras en el campo  ");
+
+				}catch (ErrorConnection e){
+
+					Notification.show(e.getMessage() + "Causa: "+ e.getCause());
+				}catch(ObjectNotFoundException b){
+					Notification.show("Usuario o respuesta incorrecta");
 				}
 			}
-		});
+		}
+				);
 
 		btnCancel = new Button("Cancelar");
 		btnCancel.addClickListener(new Button.ClickListener() {
@@ -144,5 +156,26 @@ public class Question extends  CustomComponent implements ClickListener,View {
 	public void buttonClick(ClickEvent event) {
 		// TODO Auto-generated method stub
 
-	}	
+	}
+	private void navigate(User user){
+		switch (user.getRol().getName()) {
+		case "Administrador":
+			navigator.addView(RestorePassword.NAMERESTORE, new RestorePassword(navigator, control, user));
+			navigator.navigateTo(RestorePassword.NAMERESTORE);
+			break;
+		case "Usuario":
+			Notification.show("Modulo en construccion ");
+			break;
+		default:
+			Notification.show("Rol inválido contacte a su administro ");
+			break;
+		}
+
+	}
+
+	public boolean validateUser(User user) {
+
+		return user.getAnswer().equals(txtQuestion.getValue());
+
+	}
 }
