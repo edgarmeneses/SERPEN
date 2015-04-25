@@ -20,7 +20,7 @@ public class TestControlGeneral {
 		ControlGeneral general = new ControlGeneral(sesion, transaction);
 		try {
 			
-			List<User> users= general.getUser().listByNickname(1049);
+			List<User> users= general.getUser().list(1049);
 			
 			for (User user : users) {
 				System.out.println(user);

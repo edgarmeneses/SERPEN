@@ -85,22 +85,25 @@ public class ControlRole {
 	}
 
 	public Role consultName(String name) throws ErrorConnection{
-		try{
-			Role role = new Role();
-			role = (Role) sesion.load(Role.class,name);
-			System.out.println(role);
-			//		sesion.close();
+		
+		Criteria criteria = sesion.createCriteria(Role.class);
+		criteria.add(Restrictions.like("name", name));
+		return (Role) criteria.list().get(0);
+//		try{
+//			Role role = (Role) sesion.load(Role.class,name);
+//			System.out.println(role);
+//			//		sesion.close();
 //			if(role != null){
-				return role;
+//				return role;
 //			}
 //			else{
 //				throw new ErrorConnection("no se encnto ningun rol");
 //			}
-		}catch(Exception e){
-			throw new ErrorConnection("no se pudo realizar la conexion "
-					+ "Causa: " + e.getCause());
-
-		}
+//		}catch(Exception e){
+//			throw new ErrorConnection("no se pudo realizar la conexion "
+//					+ "Causa: " + e.getCause());
+//
+//		}
 	}
 
 
@@ -154,17 +157,8 @@ public class ControlRole {
 		ControlRole rol = new ControlRole(sesion,transaction);
 
 		try {
-
-//			rol.list();
-
-			//        	rol.remove("Diana");
-			//        	rol.list();
-			//			rol.insert("Felipe");
-			//        	rol.consult(2);
-			        	rol.consultName("Usuario");
-			//rol.upDate(2, "NNNN");
-			//sesion.close();
-
+			System.out.println(rol.consultName("Administrador"));
+			
 
 		} catch (ErrorConnection e) {
 			// TODO Auto-generated catch block

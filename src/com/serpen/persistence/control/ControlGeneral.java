@@ -22,6 +22,18 @@ public class ControlGeneral {
 		this.controlHistoryUser = new ControlHistoryUser(sesion, transaction);
 	}
 	
+//	public ControlGeneral(){
+//		Session sesion = HibernateUtil.getSessionFactory().openSession();
+//		Transaction transaction = sesion.beginTransaction();
+//		
+//
+//		this.controlRole = new ControlRole(sesion,transaction);
+//		this.controlUser = new ControlUser(sesion, transaction);
+//		this.controlHistoryRole = new ControlHistoryRole(sesion, transaction);
+//		this.controlHistoryUser = new ControlHistoryUser(sesion, transaction);
+//	}
+
+
 
 	public ControlRole getRole() {
 		return controlRole;
