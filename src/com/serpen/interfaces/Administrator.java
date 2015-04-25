@@ -31,7 +31,7 @@ public class Administrator extends CustomComponent implements View{
 	
 	public Administrator (Navigator navigator, User user, ControlGeneral control){
 		
-		paneAdministrator = new PanelAdministrator(navigator,user,null);
+		paneAdministrator = new PanelAdministrator(navigator,user,control);
 		setCompositionRoot(paneAdministrator);
 		setSizeFull();
 	}
