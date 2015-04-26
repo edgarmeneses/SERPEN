@@ -146,12 +146,11 @@ public class ControlUser {
 			case "nickname":
 				return list(nickname);
 			case "union":
-				list(nickname, rol);
-				break;
+				return list(nickname, rol);
+				
 			default:
-				break;
+				return null;
 			}
-			return null;
 		}catch(Exception e){
 			throw new ErrorConnection("No se pudo realizar la consulta"
 					+ " Causa: "+e.getCause());

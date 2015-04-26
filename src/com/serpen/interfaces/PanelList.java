@@ -80,7 +80,7 @@ public class PanelList extends Panel{
 		boxRol.setVisible(true);
 		boxRol.setValue("");
 
-		boxRol.setInputPrompt("Seleccionar");
+		boxRol.select("Seleccionar");
 
 		btnSearch= new  Button("Buscar");
 
@@ -93,9 +93,11 @@ public class PanelList extends Panel{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
+				
+				fill();
 
-				System.out.println(boxRol.getInputPrompt());
-				System.out.println(boxRol.getValue().toString());
+//				System.out.println(boxRol.getInputPrompt());
+//				System.out.println(boxRol.getValue().toString());
 			}
 
 
@@ -123,7 +125,8 @@ public class PanelList extends Panel{
 		table.addContainerProperty("Rol", String.class, null);
 		table.addContainerProperty("Estado", String.class, null);
 		table.addContainerProperty("Control", PanelControlList.class, null);
-		fillTable();
+		fill();
+		//fillTable();
 		//	    Añadir algunas otras filas utilizando addItem
 		//		table.addItem(new Object[]{"123", "admin" , "Actico", new PanelControlList()}, 2);
 		//		table.addItem(new Object[] { " " ," " , " ", new PanelControlList()},3);
@@ -171,6 +174,7 @@ public class PanelList extends Panel{
 				list.add(role.getName());
 
 			}
+			list.add("Seleccionar");
 
 
 
@@ -198,50 +202,67 @@ public class PanelList extends Panel{
 	 * Agrega los usuarios a la tabla 
 	 * @return
 	 */
-	public void fillTable(){
+//	public void fillTable(){
+//
+//
+//
+//		try {
+//			////			Role role= control.getRole().consultName(boxRol.getValue().toString());
+//			////			List<User> list = control.getUser().list(stateNickname(), stateRole(), txtUser.getValue(), txtUser.getValue().toString(),
+//			//					control.getRole());
+//			List<User> users = control.getUser().list();
+//			//
+//			for (int i=0;i<users.size();i++) {
+//
+//				this.table.addItem(fillRow(users.get(i)),i);
+//			}
+//			//
+//			//			System.out.println("lista...."+list);
+//			//
+//			//			//		System.out.println(table);
+//		} catch (ErrorConnection e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//
+//	}
 
-
-
+	private void fill(){
 		try {
-//			Role role= control.getRole().consultName(boxRol.getValue().toString());
-			List<User> list = control.getUser().list(stateNickname(), stateRole(), txtUser.getValue(), txtUser.getValue().toString(),
-					control.getRole());
+			List<User> users = control.getUser().list(stateNickname(), stateRole(),
+					this.txtUser.getValue(), boxRol.getValue().toString(), control.getRole());
+		
+			table.removeAllItems();
 			
-
-			for (int i=0;i<list.size();i++) {
-
-				this.table.addItem(fillRow(list.get(i)),i);
+			for (int i = 0; i < users.size(); i++) {
+				table.addItem(fillRow(users.get(i)),i);
 			}
-
-			System.out.println("lista...."+list);
-
-			//		System.out.println(table);
 		} catch (ErrorConnection e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private int stateRole(){
 
+		if(boxRol.getValue().toString().equals("Seleccionar")){
+			return 0;
+		}else{
+			return 1;
+		}
+		//		return 0;
 
 	}
-	 private int stateRole(){
-		 
-		 if(boxRol.getValue().equals("Seleccionar")){
-			 return 0;
-		 }else{
-			 return 1;
-		 }
-//		return 0;
-		 
-	 }
-	 
-	 private int stateNickname(){
-		 
-		 if(txtUser.getValue().equals("")){
-			 return 0;
-		 }else{
-			 return 1;
-		 }
-	 }
-	 
+
+	private int stateNickname(){
+
+		if(txtUser.getValue().equals("")){
+			return 0;
+		}else{
+			return 1;
+		}
+	}
+
 }
 
