@@ -194,7 +194,7 @@ public class PanelList extends Panel{
 	 * @return
 	 */
 	public Object[] fillRow(User user){
-		return new Object[]{user.getNickname()+"", user.getRol().getName(), user.getstate(), new PanelControlList(navigator,control)};
+		return new Object[]{user.getNickname()+"", user.getRol().getName(), user.getstate(), new PanelControlList(navigator,control,user,this)};
 
 	}
 
@@ -202,33 +202,8 @@ public class PanelList extends Panel{
 	 * Agrega los usuarios a la tabla 
 	 * @return
 	 */
-//	public void fillTable(){
-//
-//
-//
-//		try {
-//			////			Role role= control.getRole().consultName(boxRol.getValue().toString());
-//			////			List<User> list = control.getUser().list(stateNickname(), stateRole(), txtUser.getValue(), txtUser.getValue().toString(),
-//			//					control.getRole());
-//			List<User> users = control.getUser().list();
-//			//
-//			for (int i=0;i<users.size();i++) {
-//
-//				this.table.addItem(fillRow(users.get(i)),i);
-//			}
-//			//
-//			//			System.out.println("lista...."+list);
-//			//
-//			//			//		System.out.println(table);
-//		} catch (ErrorConnection e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//
-//	}
 
-	private void fill(){
+	public void fill(){
 		try {
 			List<User> users = control.getUser().list(stateNickname(), stateRole(),
 					this.txtUser.getValue(), boxRol.getValue().toString(), control.getRole());

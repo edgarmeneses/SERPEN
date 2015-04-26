@@ -1,5 +1,7 @@
 package com.serpen.interfaces;
 
+import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.Button;
@@ -14,14 +16,22 @@ public class PanelControlList extends Panel{
 	private Button btnUpdate;
 	private Button btnRemove;
 	private Navigator navigator;
+	private User user;
+	private ControlGeneral cGeneral;
+	private PanelList list;
 	
-	public PanelControlList(Navigator navigator, ControlGeneral control) {
+	public PanelControlList(Navigator navigator, ControlGeneral control, User user, PanelList list) {
 		// TODO Auto-generated constructor stub
+		this.user = user;
+		this.navigator= navigator;
+		this.cGeneral= control;
+		this.list= list;
+		
 		HorizontalLayout layout = new HorizontalLayout();
 		
 		btnUpdate = new Button("Editar");
 		btnUpdate.addClickListener(new ClickListener() {
-			
+		
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
@@ -36,7 +46,7 @@ public class PanelControlList extends Panel{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				
+				removeUser();
 			}
 		});
 		
@@ -46,5 +56,16 @@ public class PanelControlList extends Panel{
 		setContent(layout);
 		setSizeFull();
 		
+	}
+	
+	public void removeUser(){
+		
+		try {
+			cGeneral.getUser().remove(user.getNickname());
+			list.fill();
+		} catch (ErrorConnection e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

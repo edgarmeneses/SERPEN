@@ -51,6 +51,7 @@ public class ControlUser {
 	public void insert (int nickname, String pasword, String answer, Role role)
 			throws ErrorConnection{
 		try{
+
 			User user = new User();
 			user.setNickname(nickname);
 			user.setPassword(pasword);
@@ -60,6 +61,8 @@ public class ControlUser {
 
 			session.save(user);
 			transaction.commit();
+			session.flush();
+			session.clear();
 
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo insertar el dato"
@@ -203,7 +206,7 @@ public class ControlUser {
 	 */
 	public void remove(int nickname) throws ErrorConnection{
 		try{
-			// Transaction transaction = session.beginTransaction();
+			 Transaction transac = session.beginTransaction();
 			User user = consult(nickname);
 			System.out.println(user);
 			ControlHistoryUser controlHistoryUser = new ControlHistoryUser(session, transaction);
@@ -211,7 +214,7 @@ public class ControlUser {
 
 
 			session.delete(user);
-			//transaction.commit();
+			transac.commit();
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo eliminar el usuario "
 					+ "Causa: "+ e.getCause());
