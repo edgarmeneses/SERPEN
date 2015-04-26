@@ -1,6 +1,7 @@
 package com.serpen.interfaces;
 
 
+import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
@@ -77,9 +78,15 @@ public class RestorePassword extends CustomComponent implements View {
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				if(txtNewPassword.getValue().equals(txtConfirm.getValue())){
-					System.out.println("Agrega la contraseña ");
-					Notification.show("Contraseña Cambiada Satisfactoriamente");
+//					System.out.println("Agrega la contraseña ");
 					
+                    try {
+						control.getUser().upDate(user.getNickname(), txtNewPassword.getValue(), user.getAnswer());
+					} catch (ErrorConnection e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
+					Notification.show("Contraseña Cambiada Satisfactoriamente");
 					navigator.addView(Login.NAMElOGUEO, new Login(navigator,control) );
 					navigator.navigateTo(Login.NAMElOGUEO);
 				}else{

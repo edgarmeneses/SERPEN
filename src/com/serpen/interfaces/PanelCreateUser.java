@@ -1,28 +1,32 @@
 package com.serpen.interfaces;
 
-import org.eclipse.jetty.util.security.Password;
+import java.util.LinkedList;
+import java.util.List;
 
+import org.hibernate.ObjectNotFoundException;
+
+import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.Role;
+import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
-import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.ComboBox;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
-
 
 @SuppressWarnings("serial")
 
@@ -43,7 +47,7 @@ public class PanelCreateUser extends Panel implements View{
 	private Navigator navigator;
 	private ControlGeneral control;
 	
-	public PanelCreateUser (Navigator navigator, ControlGeneral control){
+	public PanelCreateUser (Navigator navigator, ControlGeneral control) {
 		
 		this.navigator = navigator;
 		this.control=control;
@@ -64,8 +68,6 @@ public class PanelCreateUser extends Panel implements View{
 		
 		HorizontalLayout layoutHorizontal = new HorizontalLayout();
         
-		
-		
 	    VerticalLayout layoutDatos = new VerticalLayout();
 	    			
 		txtNickname = new TextField("Usuario");
@@ -83,18 +85,47 @@ public class PanelCreateUser extends Panel implements View{
 		this.lblImagen.setWidth("150px");
 		this.lblImagen.setHeight("150px");
 		
-		rol = new ComboBox("Rol");
-		
+
+		try {
+			rolList();
+			rol = new ComboBox("Rol",rolList());
+			rol.setInputPrompt("Seleccionar Rol:");
+			rol.setInvalidAllowed(false);
+		} catch (ErrorConnection e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	
 		HorizontalLayout layoutbutton = new HorizontalLayout();
-		btnNew = new Button("Aceptar");
 		
+		btnNew = new Button("Aceptar");		
+		btnNew.addClickListener(new ClickListener() {		
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				//navigator.addView(Administrator.NAME3, new );
+			  try {
+				    int nickame=Integer.valueOf(txtNickname.getValue());
+					String password=txtPassword.getValue();
+					String answer=txtAnswer.getValue();
+					Role role = control.getRole().consultName(rol.getValue().toString());
+				    control.getUser().insert(nickame,password,answer,role);
+				    Notification.show("El Usuario  ha sido insertado con exito!");
+			} catch (ErrorConnection e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+	}
+		});	
 		btnCancel = new Button("Cancelar");
-		btnCancel.addClickListener(new ClickListener() {
+		btnCancel.addClickListener(new Button.ClickListener() {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				//navigator.addView(Administrator.NAME3, new );
+				
 				navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
 			}
 		});
@@ -124,11 +155,25 @@ public class PanelCreateUser extends Panel implements View{
 		this.panel.setContent(layoutPanel);
 		setContent(layoutPrincipal);
 		//this.setCompositionRoot(layoutPrincipal);
-	   // setSizeFull();
+	   // setSizeFull();		
 	}
 	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public List<String> rolList() throws ErrorConnection{
+		List<Role> role;
+		
+		List<String> nameRole = new LinkedList<String>(); 
+			role = control.getRole().list();
+			System.out.println("rol nuevo "+role);
+			for (int i = 0; i < role.size(); i++) {
+				nameRole.add(role.get(i).getName());
+				
+			}
+			System.out.println(nameRole);
+			return nameRole;		
+	}	
 }
