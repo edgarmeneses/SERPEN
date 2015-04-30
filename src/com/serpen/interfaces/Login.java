@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.Role;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
@@ -94,7 +95,10 @@ public class Login extends CustomComponent implements View{
 				try {
 					User user = control.getUser().consult(Integer.valueOf(txfUserName.getValue()));
 					System.out.println(user);
-
+					
+					Role rol = control.getRole().consult(4);
+					System.out.println("rol nuevo " +rol);
+					
 					if(validateUser(user)){
 						navigate(user);
 					}
