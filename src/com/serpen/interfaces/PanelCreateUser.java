@@ -152,6 +152,8 @@ public class PanelCreateUser extends Panel implements View{
 
 		layoutPrincipal.addComponent(panel);
 		this.panel.setContent(layoutPanel);
+		
+		
 		setContent(layoutPrincipal);
 
 	}

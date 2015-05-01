@@ -11,6 +11,7 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Panel;
 
@@ -37,10 +38,15 @@ public class PanelAdministrator extends Panel{
 		layoutPrincipal.setVisible(true);
 
 
-
 		FormLayout layoutPanel = new FormLayout();
 		layoutPanel.setSizeFull();
 		layoutPanel.setVisible(true);
+		
+		HorizontalLayout horizontalLayout1 = new HorizontalLayout();
+		
+		HorizontalLayout horizontalLayout2 = new HorizontalLayout();
+		
+		HorizontalLayout horizontalLayout3 = new HorizontalLayout();
 
 		pnlOption = new  Panel();
 		pnlOption.setSizeFull();
@@ -155,13 +161,19 @@ public class PanelAdministrator extends Panel{
 		layoutPrincipal.addComponent(Imglogo);
 		layoutPrincipal.addComponent(pnlOption);	
 
-		layoutPanel.addComponent(ImgnewUser);
-		layoutPanel.addComponent(imgList);
-		layoutPanel.addComponent(imgEdit);
-		layoutPanel.addComponent(imgNewRol);
-		layoutPanel.addComponent(imgRol);
-		layoutPanel.addComponent(imgConfig);
-
+		
+		horizontalLayout1.addComponent(ImgnewUser);
+		horizontalLayout1.addComponent(imgList);
+		
+		horizontalLayout2.addComponent(imgEdit);
+		horizontalLayout2.addComponent(imgConfig);
+		
+		horizontalLayout3.addComponent(imgNewRol);
+		horizontalLayout3.addComponent(imgRol);
+         
+		layoutPanel.addComponent(horizontalLayout1);
+		layoutPanel.addComponent(horizontalLayout2);
+		layoutPanel.addComponent(horizontalLayout3);
 
 		this.pnlOption.setContent(layoutPanel);	
 		setContent(layoutPrincipal);

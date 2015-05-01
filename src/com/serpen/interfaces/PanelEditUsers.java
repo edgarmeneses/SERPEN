@@ -103,9 +103,11 @@ public class PanelEditUsers  extends Panel{
 		txtUser.setVisible(true);
 
 		this.imgRol = new Image("Rol");
-		ThemeResource resource3 = new ThemeResource("../Imagen/user.png");
-		imgRol = new Image(null, resource2);
+		ThemeResource resource3 = new ThemeResource("../Imagen/rol2.jpg");
+		imgRol = new Image(null, resource3);
 		this.imgRol.setVisible(true);
+		this.imgRol.setWidth("50px");
+		this.imgRol.setHeight("50px");
 
 		lblRol = new Label("Rol");
 		lblRol.setWidth("150px");

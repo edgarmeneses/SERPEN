@@ -13,6 +13,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
+import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -23,7 +24,7 @@ public class PanelConfiguration  extends Panel{
 	private Label lbLabelPrincipal;
 	private Image imgPasword;
 	private Label lblNewPassword;
-	private TextField txtNewPassword;
+	private PasswordField txtNewPassword;
 	private Image imgSecurity;
 	private Label lblNewSecurityAns;
 	private TextField txtNewSecurityAns;
@@ -63,7 +64,7 @@ public class PanelConfiguration  extends Panel{
 
 
 
-		lbLabelPrincipal = new Label("Editar Usuario");
+		lbLabelPrincipal = new Label("Configurar Usuario");
 		lbLabelPrincipal.setWidth("150px");
 		lbLabelPrincipal.setHeight("50px");
 		lbLabelPrincipal.setVisible(true);
@@ -78,7 +79,7 @@ public class PanelConfiguration  extends Panel{
 		lblNewPassword.setHeight("50px");
 		lblNewPassword.setVisible(true);
 
-		txtNewPassword = new TextField();
+		txtNewPassword = new PasswordField();
 		txtNewPassword.setWidth("150px");
 		txtNewPassword.setHeight("50px");
 		txtNewPassword.setVisible(true);
