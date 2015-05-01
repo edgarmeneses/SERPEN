@@ -27,6 +27,8 @@ public class ControlUser {
 	 * permite realizar transacciones con la base de datos 
 	 */
 	private Transaction transaction;
+	
+	private final String [][] SELECT_LIST ={{"lista","rol"},{"nickname","union"}};
 
 	/**
 	 * Constructor de la clase ControlUser.java
@@ -93,31 +95,35 @@ public class ControlUser {
 	 * @return usuarios
 	 * @throws ErrorConnection
 	 */
-	public List<User> listByRol(Role rol) throws ErrorConnection{
-		//try{
-		System.out.println("from usuario " +
-				"in class com.serpen.logic.entity.User "
-				+ "where com.serpen.logic.User.rol.id = "+3);
-		List<User> listaUsuario = session.createQuery(
-				"from usuario " +
-						"in class com.serpen.logic.entity.User "
-						+ "where User.rol.id = "+ rol.getId()).list();
-		//).list();
+	public List<User> list(int rol) throws ErrorConnection{
+		try{
+			String sql = "from com.serpen.logic.entity.User u " +
+					"WHERE u.rol.id = "+ rol;
 
+			List<User> listaUsuario = session.createQuery(sql).list();
 
-		for (User user : listaUsuario) {
-			System.out.println(user);
+			return listaUsuario;
+		}catch(Exception e){
+			throw new ErrorConnection("No se pudo realizar la consulta"
+					+ " Causa: "+e.getCause());
 		}
+	}
+	
+	/**
+	 * metodo que permite listar los usuarios decuerdo a una palabra clave que 
+	 * representa el nickname
+	 * se haceun filtrado por nikname
+	 * @param nickname
+	 * @return
+	 */
+	public List<User> list(String nickname){
+		String sql="from com.serpen.logic.entity.User where nickname like '%"+nickname+"%'";
+		List<User> users = session.createQuery(sql).list();
+		//Criteria criteria = session.createCriteria(User.class);c
+		//criteria.add(Restrictions.like("answer", "%D%"));
+		//List<User> users =  session.createQuery(sql).list();
+		return users;
 
-		//			if(!listaUsuario.isEmpty()){
-		return listaUsuario;
-		//			}else{
-		//				throw new ErrorConnection("no hay usuarios con el rol seleccionado");
-		//			}
-		//		}catch(Exception e){
-		//			throw new ErrorConnection("No se pudo realizar la coneccion"
-		//					+ " Causa: "+ e.getCause());
-		//		}
 	}
 	/**
 	 * metodo para consultar un usuario segun su nickname
@@ -141,13 +147,39 @@ public class ControlUser {
 			throw new ErrorConnection("No se pudo realizar la conecion");
 		}
 	}
-	/**
-	 * METODO NO APLICABLE DE MOMENTO
-	 * @param name
-	 * @return
-	 * @throws ErrorConnection
-	 */
+	
+	public List<User> list(String nickname, String rol){
 
+		String sql="from com.serpen.logic.entity.User u WHERE u.nickname like '%"+nickname+"%'"
+				+" AND u.rol.name = '"+ rol+"'";
+		List<User> users = session.createQuery(sql).list();
+		//Criteria criteria = session.createCriteria(User.class);c
+		//criteria.add(Restrictions.like("answer", "%D%"));
+		//List<User> users =  session.createQuery(sql).list();
+		return users;
+	}
+	
+	public List<User> list(int estdoNickname, int estadoRol, String nickname, String rol,ControlRole role) throws ErrorConnection{
+		try{
+			switch (SELECT_LIST[estdoNickname][estadoRol]) {
+			case "lista":
+				return list();
+			case "rol":
+				return list(role.consultName(rol).getId());
+			case "nickname":
+				return list(nickname);
+			case "union":
+				return list(nickname, rol);
+				
+			default:
+				return null;
+			}
+		}catch(Exception e){
+			throw new ErrorConnection("No se pudo realizar la consulta"
+					+ " Causa: "+e.getCause());
+		}
+	}
+	
 	/**
 	 * metodo para elimina un usuario
 	 * @param nickname nickname
