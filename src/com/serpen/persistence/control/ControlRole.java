@@ -59,17 +59,12 @@ public class ControlRole {
 
 		}
 	}
-	
-	public List<Role> listRole(String name){
-		Criteria criteria = sesion.createCriteria(Role.class);
-		criteria.add(Restrictions.like("name", "%"+name+"%"));
-		return criteria.list();
-	}
 
 	public Role consult(int id) throws ErrorConnection{
 		try{
 			Role role = new Role();
 			role = (Role) sesion.load(Role.class,id);
+			System.out.println(role);
 			return role;
 			//		sesion.close();
 //			if(role != null){
@@ -85,22 +80,10 @@ public class ControlRole {
 	}
 
 	public Role consultName(String name) throws ErrorConnection{
-		try{
-			Role role = new Role();
-			role = (Role) sesion.load(Role.class,name);
-			System.out.println(role);
-			//		sesion.close();
-			if(role != null){
-				return role;
-			}
-			else{
-				throw new ErrorConnection("no se encnto ningun rol");
-			}
-		}catch(Exception e){
-			throw new ErrorConnection("no se pudo realizar la conexion "
-					+ "Causa: " + e.getCause());
-
-		}
+	     
+		Criteria criteria = sesion.createCriteria(Role.class);
+		criteria.add(Restrictions.like("name", name));
+		return (Role) criteria.list().get(0);			
 	}
 
 
@@ -155,13 +138,13 @@ public class ControlRole {
 
 		try {
 
-			rol.list();
+			//rol.list();
 
 			//        	rol.remove("Diana");
 			//        	rol.list();
 			//			rol.insert("Felipe");
 			//        	rol.consult(2);
-			//        	rol.consultName("Diana");------> malll 
+			rol.consultName("Andres");
 			//rol.upDate(2, "NNNN");
 			//sesion.close();
 
@@ -170,7 +153,6 @@ public class ControlRole {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-
 	}
+	
 }
