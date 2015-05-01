@@ -187,19 +187,16 @@ public class ControlUser {
 	 */
 	public void remove(int nickname) throws ErrorConnection{
 		try{
-			// Transaction transaction = session.beginTransaction();
 			User user = consult(nickname);
-			System.out.println(user);
+			
 			ControlHistoryUser controlHistoryUser = new ControlHistoryUser(session, transaction);
 			controlHistoryUser.insert(user.getNickname(), user.getRol().getId());
-
-
+			
 			session.delete(user);
-			//transaction.commit();
+			transaction.commit();
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo eliminar el usuario "
 					+ "Causa: "+ e.getCause());
-
 		}
 	}
 
@@ -247,10 +244,18 @@ public class ControlUser {
 		}
 	}
 public static void main(String[] args) {
-	Session sesion = HibernateUtil.getSessionFactory().openSession();
-	Transaction transaction = sesion.beginTransaction();
 	
-	ControlUser controlUser = new ControlUser(sesion, transaction);
+	try {
+		Session sesion = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = sesion.beginTransaction();
+		
+		ControlUser controlUser = new ControlUser(sesion, transaction);
+		controlUser.remove(2900989);
+		
+	} catch (ErrorConnection e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	 
 	
 	
