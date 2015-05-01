@@ -161,8 +161,9 @@ public class PanelAdministrator extends Panel{
 		layoutPanel.addComponent(imgList);
 		layoutPanel.addComponent(imgEdit);
 		layoutPanel.addComponent(imgNewRol);
-		layoutPanel.addComponent(imgConfig);
 		layoutPanel.addComponent(imgRol);
+		layoutPanel.addComponent(imgConfig);
+		
 
 		this.pnlOption.setContent(layoutPanel);	
 		//this.setCompositionRoot(layoutPrincipal);

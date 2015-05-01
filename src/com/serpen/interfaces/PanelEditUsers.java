@@ -63,7 +63,7 @@ public class PanelEditUsers  extends Panel{
 		
 		panelEdit = new  Panel();
 		panelEdit.setWidth("480px");
-		panelEdit.setHeight("400px");
+		panelEdit.setHeight("500px");
 		
 		FormLayout formLayoutEdit = new FormLayout();
 //		formLayoutEdit.setSizeFull();

@@ -60,7 +60,7 @@ public class PanelList extends Panel{
 		pnlTable = new Panel();
 		pnlTable.setSizeFull();
 		pnlTable.setWidth("1000px");
-		pnlTable.setHeight("300px");
+		pnlTable.setHeight("400px");
 
 
 		lblUser = new Label("Usuario");		
