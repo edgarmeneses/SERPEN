@@ -25,6 +25,7 @@ public class PanelAdministrator extends Panel{
 	private Image imgEdit;
 	private Image imgConfig;
 	private Image imgNewRol;
+	private Image imgRol;
 	private Navigator navigator;
 	private User user;
 	private ControlGeneral control;
@@ -133,6 +134,24 @@ public class PanelAdministrator extends Panel{
 			}
 			
 		});
+		
+
+		this.imgRol = new Image("Rol");
+		ThemeResource resource6 = new ThemeResource("../Imagen/rol.png");
+		imgRol = new Image(null , resource6);
+		this.imgRol.setVisible(true);
+		this.imgRol.setWidth("50px");
+		this.imgRol.setHeight("50px");
+		imgRol.addClickListener(new ClickListener(){
+
+			@Override
+			public void click(ClickEvent event) {
+				// TODO Auto-generated method stub
+				navigator.addView(ListRol.NAMELISTROLE, new ListRol(navigator, user, control));
+				navigator.navigateTo(ListRol.NAMELISTROLE);
+			}
+			
+		});
 
 
 		layoutPrincipal.addComponent(Imglogo);
@@ -143,6 +162,7 @@ public class PanelAdministrator extends Panel{
 		layoutPanel.addComponent(imgEdit);
 		layoutPanel.addComponent(imgNewRol);
 		layoutPanel.addComponent(imgConfig);
+		layoutPanel.addComponent(imgRol);
 
 		this.pnlOption.setContent(layoutPanel);	
 		//this.setCompositionRoot(layoutPrincipal);
