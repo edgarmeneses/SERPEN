@@ -167,6 +167,7 @@ public class PanelEditUsers  extends Panel{
 					e.printStackTrace();
 				} catch (ErrorConnection e) {
 					// TODO Auto-generated catch block
+					System.out.println("no sirve");
 					e.printStackTrace();
 				}
 			}

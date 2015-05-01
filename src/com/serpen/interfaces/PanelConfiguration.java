@@ -1,5 +1,6 @@
 package com.serpen.interfaces;
 
+import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
@@ -98,6 +99,21 @@ public class PanelConfiguration  extends Panel{
 		btnAccept.setWidth("100px");
 		btnAccept.setHeight("50px");
 		btnAccept.setVisible(true);
+		btnAccept.addClickListener(new ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+
+				try {
+					control.getUser().upDate(0, txtNewPassword.getValue(), txtNewSecurityAns.getValue());
+				} catch (ErrorConnection e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
 
 		btnCancel = new Button("Cancelar");
 		btnCancel.addClickListener(new ClickListener() {
