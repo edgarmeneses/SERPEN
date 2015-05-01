@@ -1,5 +1,9 @@
 package com.serpen.interfaces;
 
+import java.util.List;
+
+import com.serpen.error.connection.ErrorConnection;
+import com.serpen.logic.entity.Role;
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.navigator.Navigator;
@@ -52,6 +56,8 @@ public class PanelListRol extends Panel{
 		pnlTableRol.setSizeFull();
 		pnlTableRol.setWidth("1000px");
 		pnlTableRol.setHeight("300px");
+		
+		
 
 
 		lblUser = new Label("Usuario");		
@@ -93,19 +99,15 @@ public class PanelListRol extends Panel{
 
 		table = new Table();
 
-		table.addContainerProperty("Usuario", String.class, null);
-		table.addContainerProperty("Rol", String.class, null);
-		table.addContainerProperty("Estado", String.class, null);
+		table.addContainerProperty("Nombre", String.class, null);
 		table.addContainerProperty("Control", PanelButtonRol.class, null);
-
-		table.addItem(new Object[]{" ", " " , " ",new PanelButtonRol()}, 2);
-		table.addItem(new Object[] { " " ," " , " ",new PanelButtonRol()},3);
-
 
 		table.setPageLength(table.size());  
 		table.setWidth("80%"); 
 		table.setHeight("170px");
 		table.setFooterVisible(true);
+		
+		fillTable();
 
 		layoutMenu.addComponent(lblUser);
 		layoutMenu.addComponent(txtUser);
@@ -124,4 +126,24 @@ public class PanelListRol extends Panel{
 		setContent(layoutPrincipal);
 
 	}
+	
+	public void fillTable(){
+		try {
+			List<Role> roles = controlGeneral.getRole().list();
+			table.removeAllItems();
+			for (int i = 0; i < roles.size(); i++) {
+				table.addItem(fillColumn(roles.get(i)),i);
+			}
+		} catch (ErrorConnection e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public Object[] fillColumn(Role role){
+		return new Object[]{role.getName(), new PanelButtonRol(role, controlGeneral, this)};
+	}
+	
 }

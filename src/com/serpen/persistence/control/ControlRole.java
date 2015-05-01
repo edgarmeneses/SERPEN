@@ -87,8 +87,7 @@ public class ControlRole {
 	}
 
 
-	public void remove(int id, ControlHistoryRole controlHistoryRole,
-			ControlUser controlUser, ControlHistoryUser controlHistoryUser) throws ErrorConnection{
+	public void remove(int id) throws ErrorConnection{
 		Transaction transaction = sesion.beginTransaction();
 
 		//		//----------- Falta (o"o) ---------------------
@@ -101,9 +100,9 @@ public class ControlRole {
 		//		roleHistory.setName(role.getName());
 		//		roleHistory.setRole(role.getId());
 
-		controlHistoryRole.insert(role.getId(), role.getName());
+		//ControlHistoryRole controlHistoryRole.insert(role.getId(), role.getName());
 
-		controlUser.removeRol(role.getId(), controlHistoryUser);
+		//ControlUser controlUser.removeRol(role.getId(), controlHistoryUser);
 
 		sesion.delete(role);
 		transaction.commit();
