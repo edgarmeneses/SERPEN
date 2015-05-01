@@ -250,7 +250,7 @@ public static void main(String[] args) {
 		Transaction transaction = sesion.beginTransaction();
 		
 		ControlUser controlUser = new ControlUser(sesion, transaction);
-		controlUser.remove(2900989);
+		controlUser.remove(32);
 		
 	} catch (ErrorConnection e) {
 		// TODO Auto-generated catch block

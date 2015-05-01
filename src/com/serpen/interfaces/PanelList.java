@@ -185,6 +185,7 @@ public class PanelList extends Panel{
 	 */
 	public Object[] fillRow(User user){
 		return new Object[]{user.getNickname()+"", user.getRol().getName(), user.getstate(), new PanelControlList(navigator,control,user,this)};
+		
 
 	}
 
