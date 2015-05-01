@@ -194,19 +194,19 @@ public class PanelList extends Panel{
 	 */
 
 	public void fill(){
-//		try {
-////			List<User> users = control.getUser().list(stateNickname(), stateRole(),
-////					this.txtUser.getValue(), boxRol.getValue().toString(), control.getRole());
-//
-//			table.removeAllItems();
-//
-//			for (int i = 0; i < users.size(); i++) {
-//				table.addItem(fillRow(users.get(i)),i);
-//			}
-//		} catch (ErrorConnection e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			List<User> users = control.getUser().list(stateNickname(), stateRole(),
+					this.txtUser.getValue(), boxRol.getValue().toString(), control.getRole());
+
+			table.removeAllItems();
+
+			for (int i = 0; i < users.size(); i++) {
+				table.addItem(fillRow(users.get(i)),i);
+			}
+		} catch (ErrorConnection e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 }
 
 	private int stateRole(){
