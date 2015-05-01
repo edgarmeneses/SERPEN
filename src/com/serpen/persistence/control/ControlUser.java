@@ -2,7 +2,6 @@ package com.serpen.persistence.control;
 
 import java.util.List;
 
-import org.atmosphere.interceptor.SSEAtmosphereInterceptor;
 import org.hibernate.Criteria;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
@@ -28,6 +27,8 @@ public class ControlUser {
 	 * permite realizar transacciones con la base de datos 
 	 */
 	private Transaction transaction;
+	
+	private final String [][] SELECT_LIST ={{"lista","rol"},{"nickname","union"}};
 
 	/**
 	 * Constructor de la clase ControlUser.java
@@ -94,28 +95,35 @@ public class ControlUser {
 	 * @return usuarios
 	 * @throws ErrorConnection
 	 */
-	public List<User> listByRol(Role rol) throws ErrorConnection{
+	public List<User> list(int rol) throws ErrorConnection{
 		try{
-		String sql = "from com.serpen.logic.entity.User u " +
-				 "WHERE u.rol.id = "+ 4;
-		
-		List<User> listaUsuario = session.createQuery(sql).list();
+			String sql = "from com.serpen.logic.entity.User u " +
+					"WHERE u.rol.id = "+ rol;
 
-		return listaUsuario;
+			List<User> listaUsuario = session.createQuery(sql).list();
+
+			return listaUsuario;
 		}catch(Exception e){
 			throw new ErrorConnection("No se pudo realizar la consulta"
 					+ " Causa: "+e.getCause());
 		}
 	}
 	
-	public List<User> listByNickname(int nickname){
-		String sql="from com.serpen.logic.entity.User u "
-				+ "WHERE u.nickname LIKE %"+nickname+"%";
-		Criteria criteria = session.createCriteria(User.class);
-		criteria.add(Restrictions.like("answer", "%D%"));
+	/**
+	 * metodo que permite listar los usuarios decuerdo a una palabra clave que 
+	 * representa el nickname
+	 * se haceun filtrado por nikname
+	 * @param nickname
+	 * @return
+	 */
+	public List<User> list(String nickname){
+		String sql="from com.serpen.logic.entity.User where nickname like '%"+nickname+"%'";
+		List<User> users = session.createQuery(sql).list();
+		//Criteria criteria = session.createCriteria(User.class);c
+		//criteria.add(Restrictions.like("answer", "%D%"));
 		//List<User> users =  session.createQuery(sql).list();
-		return criteria.list();
-		
+		return users;
+
 	}
 	/**
 	 * metodo para consultar un usuario segun su nickname
@@ -139,24 +147,39 @@ public class ControlUser {
 			throw new ErrorConnection("No se pudo realizar la conecion");
 		}
 	}
-	/**
-	 * METODO NO APLICABLE DE MOMENTO
-	 * @param name
-	 * @return
-	 * @throws ErrorConnection
-	 */
-	public User consultName(String name) throws ErrorConnection{
+	
+	public List<User> list(String nickname, String rol){
 
-		User user = (User) session.load(User.class,name);
-		System.out.println(user);
-		//		sesion.close();
-		if(user != null){
-			return user;
-		}
-		else{
-			throw new ErrorConnection("no se encnto ningun rol");
+		String sql="from com.serpen.logic.entity.User u WHERE u.nickname like '%"+nickname+"%'"
+				+" AND u.rol.name = '"+ rol+"'";
+		List<User> users = session.createQuery(sql).list();
+		//Criteria criteria = session.createCriteria(User.class);c
+		//criteria.add(Restrictions.like("answer", "%D%"));
+		//List<User> users =  session.createQuery(sql).list();
+		return users;
+	}
+	
+	public List<User> list(int estdoNickname, int estadoRol, String nickname, String rol,ControlRole role) throws ErrorConnection{
+		try{
+			switch (SELECT_LIST[estdoNickname][estadoRol]) {
+			case "lista":
+				return list();
+			case "rol":
+				return list(role.consultName(rol).getId());
+			case "nickname":
+				return list(nickname);
+			case "union":
+				return list(nickname, rol);
+				
+			default:
+				return null;
+			}
+		}catch(Exception e){
+			throw new ErrorConnection("No se pudo realizar la consulta"
+					+ " Causa: "+e.getCause());
 		}
 	}
+	
 	/**
 	 * metodo para elimina un usuario
 	 * @param nickname nickname
@@ -219,10 +242,18 @@ public class ControlUser {
 			transaction.commit();
 			session.close();
 		}catch(Exception e){
-			throw new ErrorConnection("no se pudo editar el suario "
+			throw new ErrorConnection("no se pudo editar el Usuario "
 					+ "Causa: "+ e.getCause());
 		}
 	}
-
+public static void main(String[] args) {
+	Session sesion = HibernateUtil.getSessionFactory().openSession();
+	Transaction transaction = sesion.beginTransaction();
+	
+	ControlUser controlUser = new ControlUser(sesion, transaction);
+	 
+	
+	
+}
 
 }
