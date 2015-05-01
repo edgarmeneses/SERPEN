@@ -7,9 +7,9 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
 public class WindowsEditUser extends Window{
-	
+
 	private PanelEditUsers editUsers;
-	
+
 	public WindowsEditUser(Navigator navigator, ControlGeneral control) {
 		// TODO Auto-generated constructor stub
 		super("Editar Usuario");
@@ -21,7 +21,7 @@ public class WindowsEditUser extends Window{
 		layout.addComponent(editUsers);
 		layout.setMargin(true);
 		setContent(layout);
-		
+
 	}
 
 }

@@ -23,26 +23,26 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component.Event;
 
 public class Administrator extends CustomComponent implements View{
-	
+
 	public static final String NAMEADMINISTRATOR="Administrador";
 	private PanelAdministrator paneAdministrator;
 	private User user;
 	private ControlGeneral control;
-	
+
 	public Administrator (Navigator navigator, User user, ControlGeneral control){
-		
+
 		paneAdministrator = new PanelAdministrator(navigator,user,control);
 		setCompositionRoot(paneAdministrator);
 		setSizeFull();
 	}
-	
+
 
 	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
+
+
 
 }

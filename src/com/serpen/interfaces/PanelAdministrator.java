@@ -16,8 +16,6 @@ import com.vaadin.ui.Panel;
 
 public class PanelAdministrator extends Panel{
 
-//
-//	public static final String NAMEPANELA="Administrador";
 	private Image Imglogo;
 	private Panel pnlOption;
 	private Image ImgnewUser;
@@ -33,7 +31,7 @@ public class PanelAdministrator extends Panel{
 
 		this.navigator=navigator;
 		this.control= control;
-		
+
 		FormLayout layoutPrincipal = new FormLayout();
 		layoutPrincipal.setSizeFull();
 		layoutPrincipal.setVisible(true);
@@ -58,7 +56,7 @@ public class PanelAdministrator extends Panel{
 		ThemeResource resource1 = new ThemeResource("../Imagen/crear.png");
 		ImgnewUser =new Image (null, resource1);
 		ImgnewUser.addClickListener(new ClickListener() {
-			
+
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
@@ -74,7 +72,7 @@ public class PanelAdministrator extends Panel{
 		imgList =new Image (null, resource2);
 		this.imgList.setVisible(true);
 		imgList.addClickListener(new ClickListener() {
-			
+
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
@@ -82,7 +80,7 @@ public class PanelAdministrator extends Panel{
 				navigator.navigateTo(List.NAMELIST);
 			}
 		});
-		
+
 
 		this.imgEdit= new Image("Editar");
 		ThemeResource resource3 = new ThemeResource("../Imagen/editar.png");
@@ -97,16 +95,16 @@ public class PanelAdministrator extends Panel{
 				navigator.navigateTo(EditUsers.NAMEEDIT);
 				System.out.println("hhhhh");
 			}
-			
+
 		});
-		
+
 		this.imgNewRol = new Image("Rol");
-	    ThemeResource resource5 = new ThemeResource("../Imagen/role.png");
-	    imgNewRol= new Image(null, resource5);
-	    this.imgNewRol.setVisible(true);
-	    imgNewRol.setWidth("50px");
-	    imgNewRol.setHeight("50px");
-	    imgNewRol.addClickListener(new ClickListener(){
+		ThemeResource resource5 = new ThemeResource("../Imagen/role.png");
+		imgNewRol= new Image(null, resource5);
+		this.imgNewRol.setVisible(true);
+		imgNewRol.setWidth("50px");
+		imgNewRol.setHeight("50px");
+		imgNewRol.addClickListener(new ClickListener(){
 
 			@Override
 			public void click(ClickEvent event) {
@@ -114,9 +112,9 @@ public class PanelAdministrator extends Panel{
 				navigator.addView(CreateRol.NAMECREATEROLE, new CreateRol(navigator, user, control));
 				navigator.navigateTo(CreateRol.NAMECREATEROLE);
 			}
-	    	
-	    });
-	    
+
+		});
+
 		this.imgConfig= new Image("Configuracion");
 		ThemeResource resource4 = new ThemeResource("../Imagen/configuracion.png");
 		imgConfig =new Image (null, resource4);
@@ -132,9 +130,9 @@ public class PanelAdministrator extends Panel{
 				navigator.navigateTo(Configuration.NAMECONFIGURATION);
 				System.out.println("hhhhh");
 			}
-			
+
 		});
-		
+
 
 		this.imgRol = new Image("Rol");
 		ThemeResource resource6 = new ThemeResource("../Imagen/rol.png");
@@ -150,7 +148,7 @@ public class PanelAdministrator extends Panel{
 				navigator.addView(ListRol.NAMELISTROLE, new ListRol(navigator, user, control));
 				navigator.navigateTo(ListRol.NAMELISTROLE);
 			}
-			
+
 		});
 
 
@@ -163,10 +161,9 @@ public class PanelAdministrator extends Panel{
 		layoutPanel.addComponent(imgNewRol);
 		layoutPanel.addComponent(imgRol);
 		layoutPanel.addComponent(imgConfig);
-		
+
 
 		this.pnlOption.setContent(layoutPanel);	
-		//this.setCompositionRoot(layoutPrincipal);
 		setContent(layoutPrincipal);
 
 	}

@@ -18,8 +18,8 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 public class PanelConfiguration  extends Panel{
-	
-//	
+
+	//	
 	private Label lbLabelPrincipal;
 	private Image imgPasword;
 	private Label lblNewPassword;
@@ -33,95 +33,95 @@ public class PanelConfiguration  extends Panel{
 	private Button  btnCancel;
 	private User user;
 	private ControlGeneral control;
-	
+
 	public PanelConfiguration(Navigator navigator, User user, ControlGeneral control){
-		
+
 		this.navigator=navigator;
 		this.user = user;
 		this.control=control;
-		
+
 		FormLayout formLayoutPrin= new FormLayout();
 		formLayoutPrin.setSizeFull();
 		formLayoutPrin.setVisible(true);
-		
+
 		panelEdit = new  Panel();
 		panelEdit.setWidth("400px");
 		panelEdit.setHeight("400px");
-		
+
 		FormLayout formLayoutEdit = new FormLayout();
-//		formLayoutEdit.setSizeFull();
+
 		formLayoutEdit.setVisible(true);
-		
+
 		HorizontalLayout layautPassword= new HorizontalLayout();
-//	    layautPassword.setVisible(true);
-	    
-	    HorizontalLayout layoutSecurity = new HorizontalLayout();
-//	    layoutSecurity.setVisible(true);
-	    
-	    HorizontalLayout layoutBtn = new HorizontalLayout();
-	    layoutBtn.setVisible(true);
-	    
-	    
-	    
-	    lbLabelPrincipal = new Label("Editar Usuario");
-	    lbLabelPrincipal.setWidth("150px");
-	    lbLabelPrincipal.setHeight("50px");
-	    lbLabelPrincipal.setVisible(true);
-	    
-	    this.imgPasword = new Image("Constraseña");
+
+
+		HorizontalLayout layoutSecurity = new HorizontalLayout();
+
+
+		HorizontalLayout layoutBtn = new HorizontalLayout();
+		layoutBtn.setVisible(true);
+
+
+
+		lbLabelPrincipal = new Label("Editar Usuario");
+		lbLabelPrincipal.setWidth("150px");
+		lbLabelPrincipal.setHeight("50px");
+		lbLabelPrincipal.setVisible(true);
+
+		this.imgPasword = new Image("Constraseña");
 		ThemeResource resource = new ThemeResource("../Imagen/constrase_a_converted.png");
 		imgPasword =new Image (null, resource);
 		this.imgPasword.setVisible(true);
-		
+
 		lblNewPassword = new Label("Nueva Contraseña");
 		lblNewPassword.setWidth("150px");
 		lblNewPassword.setHeight("50px");
 		lblNewPassword.setVisible(true);
-		
+
 		txtNewPassword = new TextField();
 		txtNewPassword.setWidth("150px");
 		txtNewPassword.setHeight("50px");
 		txtNewPassword.setVisible(true);
-		
-		 this.imgSecurity = new Image("Constraseña");
-		 ThemeResource resource1 = new ThemeResource("../Imagen/profesor.jpg");
-		 imgSecurity =new Image (null, resource1);
-	     this.imgSecurity.setVisible(true);
-		
+
+		this.imgSecurity = new Image("Constraseña");
+		ThemeResource resource1 = new ThemeResource("../Imagen/profesor.jpg");
+		imgSecurity =new Image (null, resource1);
+		this.imgSecurity.setVisible(true);
+
 		lblNewSecurityAns = new Label("Respuesta  Seguridad");
 		lblNewSecurityAns.setWidth("150px");
 		lblNewSecurityAns.setHeight("50px");
 		lblNewSecurityAns.setVisible(true);
-		
+
 		btnAccept = new Button("Aceptar");
 		btnAccept.setWidth("100px");
 		btnAccept.setHeight("50px");
 		btnAccept.setVisible(true);
-		
+
 		btnCancel = new Button("Cancelar");
 		btnCancel.addClickListener(new ClickListener() {
-			
+
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				//navigator.addView(Administrator.NAME3, new );
+
 				navigator.navigateTo(Administrator.NAMEADMINISTRATOR);
 			}
 		});
 		btnCancel.setWidth("100px");
 		btnCancel.setHeight("50px");
-//		btnCancel.setVisible(true);
-		
+
+
 		txtNewSecurityAns = new TextField();
 		txtNewSecurityAns.setWidth("150px");
 		txtNewSecurityAns.setHeight("50px");
 		txtNewSecurityAns.setVisible(true);
-		
+
 		formLayoutEdit.addComponent(lbLabelPrincipal);
 		formLayoutEdit.addComponent(layautPassword);
 		formLayoutEdit.addComponent(layoutSecurity);
 		formLayoutEdit.addComponent(layoutBtn);
-		
+
 		layautPassword.addComponent(imgPasword);
 		layautPassword.addComponent(lblNewPassword);
 		layautPassword.addComponent(txtNewPassword);
@@ -130,7 +130,7 @@ public class PanelConfiguration  extends Panel{
 		layoutSecurity.addComponent(txtNewSecurityAns);
 		layoutBtn.addComponent(btnAccept);
 		layoutBtn.addComponent(btnCancel );
-		
+
 		panelEdit.setContent(formLayoutEdit);
 		formLayoutPrin.addComponent(panelEdit);
 		setContent(formLayoutPrin);
@@ -140,8 +140,7 @@ public class PanelConfiguration  extends Panel{
 	 * permite cambiar su contraseña y su respuesta de seguridad
 	 */
 	private void changeInform(){
-		
+
 	}
 
 }
-	

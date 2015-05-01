@@ -5,11 +5,11 @@ public class UserHistory {
 	private int nickname;
 	private char estado;
 	private int  rol;	
-  
-    public static final char TIPO_ESTADO_INACTIVO= 'I'; 
-    
+
+	public static final char TIPO_ESTADO_INACTIVO= 'I'; 
+
 	public UserHistory() {
-		
+
 	}
 	public UserHistory(int id, int nickname, char estado, int rol) {
 		super();
@@ -47,13 +47,13 @@ public class UserHistory {
 		return "UserHistory [id=" + id + ", nickname=" + nickname + ", estado="
 				+ estado + ", rol=" + rol + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 
 }

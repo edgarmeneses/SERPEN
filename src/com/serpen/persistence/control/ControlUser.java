@@ -122,9 +122,6 @@ public class ControlUser {
 	public List<User> list(String nickname){
 		String sql="from com.serpen.logic.entity.User where nickname like '%"+nickname+"%'";
 		List<User> users = session.createQuery(sql).list();
-		//Criteria criteria = session.createCriteria(User.class);c
-		//criteria.add(Restrictions.like("answer", "%D%"));
-		//List<User> users =  session.createQuery(sql).list();
 		return users;
 
 	}
@@ -133,9 +130,6 @@ public class ControlUser {
 		String sql="from com.serpen.logic.entity.User u WHERE u.nickname like '%"+nickname+"%'"
 				+" AND u.rol.name = '"+ rol+"'";
 		List<User> users = session.createQuery(sql).list();
-		//Criteria criteria = session.createCriteria(User.class);c
-		//criteria.add(Restrictions.like("answer", "%D%"));
-		//List<User> users =  session.createQuery(sql).list();
 		return users;
 	}
 
@@ -150,7 +144,7 @@ public class ControlUser {
 				return list(nickname);
 			case "union":
 				return list(nickname, rol);
-				
+
 			default:
 				return null;
 			}
@@ -206,7 +200,7 @@ public class ControlUser {
 	 */
 	public void remove(int nickname) throws ErrorConnection{
 		try{
-			 Transaction transac = session.beginTransaction();
+			Transaction transac = session.beginTransaction();
 			User user = consult(nickname);
 			System.out.println(user);
 			ControlHistoryUser controlHistoryUser = new ControlHistoryUser(session, transaction);

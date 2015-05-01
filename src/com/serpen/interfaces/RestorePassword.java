@@ -22,7 +22,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
 
 public class RestorePassword extends CustomComponent implements View {
-	
+
 	private Label lblLogo;
 	private Label lblNewPassword;
 	private Label lblConfirm;
@@ -33,54 +33,54 @@ public class RestorePassword extends CustomComponent implements View {
 	private Button btnCancel;
 	private Image  imgSecurity;
 	private Image imgPasword;
-	
+
 	private Navigator navigator;
 	private ControlGeneral control;
 	private User user;
-	
+
 	public static final String NAMERESTORE="Pregunta";
-	
+
 	public RestorePassword(Navigator navigator, ControlGeneral control, User user){
-		
+
 		this.navigator=navigator;
 		this.control=control;
-		
+
 		FormLayout layoutPrincipal = new FormLayout();
 
-		
+
 		FormLayout layoutPanel = new FormLayout();
-		
-		
+
+
 		HorizontalLayout layoutNewPassword = new HorizontalLayout();
-		
+
 		HorizontalLayout layoutConPassword= new HorizontalLayout();
-		
+
 		HorizontalLayout layoutBtn = new HorizontalLayout();
 
-		
+
 		pnlMain = new Panel();
 		pnlMain.setSizeFull();
 		pnlMain.setWidth("500px");
 		pnlMain.setHeight("300px");
 
-		
+
 		lblLogo = new Label("LOGO");
 		lblNewPassword = new Label("Falta imagen");
-		
+
 		txtNewPassword = new PasswordField("Nueva Contraseña");
 		lblConfirm = new Label("Falta imagen");
 		txtConfirm = new PasswordField("Confirmar Constraseña");
-		
+
 		btnConfirm = new Button("Confirmar");
 		btnConfirm.addClickListener(new Button.ClickListener() {
-			
+
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				if(txtNewPassword.getValue().equals(txtConfirm.getValue())){
-//					System.out.println("Agrega la contraseña ");
-					
-                    try {
+
+
+					try {
 						control.getUser().upDate(user.getNickname(), txtNewPassword.getValue(), user.getAnswer());
 					} catch (ErrorConnection e) {
 						// TODO Auto-generated catch block
@@ -96,10 +96,10 @@ public class RestorePassword extends CustomComponent implements View {
 				}
 			}
 		});
-		
+
 		btnCancel = new Button("Cancelar");
 		btnCancel.addClickListener(new Button.ClickListener() {
-			
+
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
@@ -107,41 +107,41 @@ public class RestorePassword extends CustomComponent implements View {
 				navigator.navigateTo(Login.NAMElOGUEO);
 			}
 		});
-		
+
 		this.imgPasword = new Image("password");
 		ThemeResource resource1 = new ThemeResource("../Imagen/passwords.jpg");
 		imgPasword =new Image (null, resource1);
 		this.imgPasword.setVisible(true);
-		
+
 		this.imgSecurity = new Image("Segurity");
 		ThemeResource resource = new ThemeResource("../Imagen/constrase_a_converted.png");
 		imgSecurity =new Image (null, resource);
 		this.imgSecurity.setVisible(true);
-		
-		
-	
+
+
+
 		layoutNewPassword.addComponent(imgPasword);
 		layoutNewPassword.addComponent(txtNewPassword);
 		layoutConPassword.addComponent(imgSecurity);
 		layoutConPassword.addComponent(txtConfirm);
-		
+
 		layoutBtn.addComponent(btnConfirm);
 		layoutBtn.addComponent(btnCancel);	
 		this.pnlMain.setContent(layoutPanel);
-		
+
 		layoutPanel.addComponent(layoutNewPassword);
 		layoutPanel.addComponent(layoutConPassword);
 		layoutPanel.addComponent(layoutBtn);
 		layoutPrincipal.addComponent(pnlMain);
-        setCompositionRoot(layoutPrincipal);
+		setCompositionRoot(layoutPrincipal);
 		setSizeFull();
-		
+
 	}
 
 	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

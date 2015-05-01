@@ -51,8 +51,7 @@ public class Login extends CustomComponent implements View{
 		layoutPrincipal.setStyleName("v-SIDEBAR");
 
 		FormLayout layoutPanel = new FormLayout();
-		//		layoutPanel.setWidth("400px");
-		//		layoutPanel.setHeight("500px");
+
 		layoutPanel.setVisible(true);
 
 		HorizontalLayout layoutUser = new HorizontalLayout();
@@ -95,10 +94,10 @@ public class Login extends CustomComponent implements View{
 				try {
 					User user = control.getUser().consult(Integer.valueOf(txfUserName.getValue()));
 					System.out.println(user);
-					
+
 					Role rol = control.getRole().consult(4);
 					System.out.println("rol nuevo " +rol);
-					
+
 					if(validateUser(user)){
 						navigate(user);
 					}
@@ -115,9 +114,7 @@ public class Login extends CustomComponent implements View{
 
 			}
 		});
-		//btnLogin.addClickListener(this);
-		//this.btnLogin.addStyleName("v-button-style");	
-		//this.btnLogin.addStyleName("v-ie8");	
+
 
 		this.lblQuestion = new Link("¿olvido su contraseña?",new ExternalResource("#!"+Question.NAMEQUESTION));
 

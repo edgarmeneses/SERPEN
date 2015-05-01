@@ -23,7 +23,10 @@ public class ControlRole {
 	}
 
 	public void insert(String name) throws ErrorConnection{
-
+		
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = sesion.beginTransaction();
+        
 		try{
 			//Transaction transaction = sesion.beginTransaction();
 			Role role = new Role();
@@ -38,6 +41,9 @@ public class ControlRole {
 	}
 
 	public List<Role> list() throws ErrorConnection{
+		
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = sesion.beginTransaction();
 
 		try{
 			List<Role> listRole = sesion.createQuery(
@@ -61,12 +67,20 @@ public class ControlRole {
 	}
 	
 	public List<Role> listRole(String name){
+		
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = sesion.beginTransaction();
+        
 		Criteria criteria = sesion.createCriteria(Role.class);
 		criteria.add(Restrictions.like("name", "%"+name+"%"));
 		return criteria.list();
 	}
 
 	public Role consult(int id) throws ErrorConnection{
+		
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = sesion.beginTransaction();
+        
 		try{
 			Role role = new Role();
 			role = (Role) sesion.load(Role.class,id);
@@ -85,6 +99,9 @@ public class ControlRole {
 	}
 
 	public Role consultName(String name) throws ErrorConnection{
+		
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = sesion.beginTransaction();
 		
 		Criteria criteria = sesion.createCriteria(Role.class);
 		criteria.add(Restrictions.like("name", name));
@@ -109,7 +126,10 @@ public class ControlRole {
 
 	public void remove(int id, ControlHistoryRole controlHistoryRole,
 			ControlUser controlUser, ControlHistoryUser controlHistoryUser) throws ErrorConnection{
-		Transaction transaction = sesion.beginTransaction();
+		
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = sesion.beginTransaction();
+//		Transaction transaction = sesion.beginTransaction();
 
 		//		//----------- Falta (o"o) ---------------------
 		//		Role role= new Role();
@@ -135,9 +155,12 @@ public class ControlRole {
 	}
 
 	public void upDate(int id,String nombre)throws ErrorConnection{
+		
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = sesion.beginTransaction();
 
 		try{
-			Transaction transaction = sesion.beginTransaction();
+//			Transaction transaction = sesion.beginTransaction();
 			Role role = new Role();
 			role.setId(id);
 			role.setName(nombre);  
@@ -150,21 +173,21 @@ public class ControlRole {
 		}
 	}
 
-	public static void main(String[] args) {
-
-		Session sesion = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = sesion.beginTransaction();
-		ControlRole rol = new ControlRole(sesion,transaction);
-
-		try {
-			System.out.println(rol.consultName("Administrador"));
-			
-
-		} catch (ErrorConnection e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-	}
+//	public static void main(String[] args) {
+//
+//		Session sesion = HibernateUtil.getSessionFactory().openSession();
+//		Transaction transaction = sesion.beginTransaction();
+//		ControlRole rol = new ControlRole(sesion,transaction);
+//
+//		try {
+//			System.out.println(rol.consultName("Administrador"));
+//			
+//
+//		} catch (ErrorConnection e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//
+//	}
 }

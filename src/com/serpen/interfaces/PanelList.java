@@ -93,11 +93,9 @@ public class PanelList extends Panel{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				
+
 				fill();
 
-//				System.out.println(boxRol.getInputPrompt());
-//				System.out.println(boxRol.getValue().toString());
 			}
 
 
@@ -117,21 +115,16 @@ public class PanelList extends Panel{
 		});
 
 		table = new Table();
-		//	    table.setWidth("100%"); //Ocupa todo el ancho del navegador
-		//	    table.setHeight("170px"); //Altura del Grid.
 
-		// Definir  columnas 
+		/** Definir  columnas **/
 		table.addContainerProperty("Usuario", String.class, null);
 		table.addContainerProperty("Rol", String.class, null);
 		table.addContainerProperty("Estado", String.class, null);
 		table.addContainerProperty("Control", PanelControlList.class, null);
 		fill();
-		//fillTable();
-		//	    Añadir algunas otras filas utilizando addItem
-		//		table.addItem(new Object[]{"123", "admin" , "Actico", new PanelControlList()}, 2);
-		//		table.addItem(new Object[] { " " ," " , " ", new PanelControlList()},3);
 
-		//Mostrar exactamente el momento contenían fila
+
+		/** Mostrar exactamente el momento contenían fila**/
 		table.setPageLength(table.size());  
 		table.setWidth("80%"); //Ocupa todo el ancho del navegador
 		table.setHeight("170px"); //Altura del Grid.
@@ -152,8 +145,7 @@ public class PanelList extends Panel{
 		layoutPrincipal.addComponent(pnlTable);
 
 		setContent(layoutPrincipal);
-		//this.setCompositionRoot(layoutPrincipal);	
-		//this.setSizeFull();	 
+
 
 	}
 	/**
@@ -177,8 +169,6 @@ public class PanelList extends Panel{
 			list.add("Seleccionar");
 
 
-
-			//			list.add("Seleccionar Rol ");
 
 		} catch (ErrorConnection e) {
 			// TODO Auto-generated catch block
@@ -207,9 +197,9 @@ public class PanelList extends Panel{
 		try {
 			List<User> users = control.getUser().list(stateNickname(), stateRole(),
 					this.txtUser.getValue(), boxRol.getValue().toString(), control.getRole());
-		
+
 			table.removeAllItems();
-			
+
 			for (int i = 0; i < users.size(); i++) {
 				table.addItem(fillRow(users.get(i)),i);
 			}
@@ -218,7 +208,7 @@ public class PanelList extends Panel{
 			e.printStackTrace();
 		}
 	}
-	
+
 	private int stateRole(){
 
 		if(boxRol.getValue().toString().equals("Seleccionar")){
@@ -226,7 +216,6 @@ public class PanelList extends Panel{
 		}else{
 			return 1;
 		}
-		//		return 0;
 
 	}
 

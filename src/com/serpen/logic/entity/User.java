@@ -2,29 +2,29 @@ package com.serpen.logic.entity;
 
 public class User {
 
-    private int nickname;
-    private String password;
-    private String answer;
-    private Role rol;
-    private char  estado;
-  
-  
-    public static final char TIPO_ESTADO_ACTIVO = 'A';
-   
-    public User() {
-       
+	private int nickname;
+	private String password;
+	private String answer;
+	private Role rol;
+	private char  estado;
 
-   }
-    public char getEstado() {
-        return estado;
-    }
-    public void setEstado(char estado) {
-        this.estado = estado;
-    }
-    
-    
-   
-    public User(int nickname, String password, String answer,
+
+	public static final char TIPO_ESTADO_ACTIVO = 'A';
+
+	public User() {
+
+
+	}
+	public char getEstado() {
+		return estado;
+	}
+	public void setEstado(char estado) {
+		this.estado = estado;
+	}
+
+
+
+	public User(int nickname, String password, String answer,
 			Role rol, char estado) {
 		this.nickname = nickname;
 		this.password = password;
@@ -34,30 +34,30 @@ public class User {
 	}
 
 	public Role getRol() {
-        return rol;
-    }
+		return rol;
+	}
 
-    public void setRol(Role rol) {
-        this.rol = rol;
-    }
+	public void setRol(Role rol) {
+		this.rol = rol;
+	}
 
-  
 
-    public int getNickname() {
-        return nickname;
-    }
 
-    public void setNickname(int nickname) {
-        this.nickname = nickname;
-    }
+	public int getNickname() {
+		return nickname;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setNickname(int nickname) {
+		this.nickname = nickname;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 
 	public String getAnswer() {
@@ -75,13 +75,13 @@ public class User {
 
 	public String getstate(){
 		if(estado == 'A'){
-			
+
 			return "Activo";
 		}else{
 			return "Inactive";
 		}
-			
+
 	}
-   
-   
+
+
 }

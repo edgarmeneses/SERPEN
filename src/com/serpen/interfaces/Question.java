@@ -28,7 +28,6 @@ import com.vaadin.ui.TextField;
 public class Question extends  CustomComponent implements ClickListener,View {
 
 	public static final String NAMEQUESTION ="¿olvido su contraseña?";
-	//public static final String NAME3 ="Pregunta";
 	private Label lblDescription;
 	private Label lblDescription2;
 	private Image UserName;
@@ -52,8 +51,6 @@ public class Question extends  CustomComponent implements ClickListener,View {
 		layoutPrincipal.setVisible(true);
 
 		FormLayout layoutPanel = new FormLayout();
-		//		layoutPanel.setWidth("500px");
-		//		layoutPanel.setHeight("500px");
 		layoutPanel.setVisible(true);
 
 

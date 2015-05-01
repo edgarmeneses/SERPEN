@@ -21,22 +21,22 @@ public class ListRol extends CustomComponent implements View{
 	private PanelAdministrator administrator;
 	private PanelListRol roListRol;
 	public static final String NAMELISTROLE="ListarRoles";
-	
+
 	public ListRol(Navigator navigator, User user, ControlGeneral control){
-		
+
 		HorizontalLayout layout = new HorizontalLayout();
-		
+
 		administrator= new PanelAdministrator(navigator, user, control);
 		roListRol= new PanelListRol(navigator, control);
 		layout.addComponent(administrator);
 		layout.addComponent(roListRol);
 		setCompositionRoot(layout);
 		setSizeFull();
-		}
+	}
 
 	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	}
+}

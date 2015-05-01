@@ -1,13 +1,13 @@
 package com.serpen.logic.entity;
 
 public class RoleHistory {
-	
+
 	private int id;
 	private int role;
 	private String name;
-	
+
 	public RoleHistory() {
-		
+
 	}
 	public RoleHistory(int id, int role, String name) {
 		this.id = id;

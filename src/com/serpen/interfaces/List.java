@@ -9,14 +9,14 @@ import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
 
 public class List extends CustomComponent implements View{
-	
+
 	private PanelAdministrator administrator;
 	private PanelList list;
 	public static final String NAMELIST="ListarUsuarios";
-	
+
 	public List(Navigator navigator, User user, ControlGeneral control) {
 		HorizontalLayout layout = new HorizontalLayout();
-		
+
 		administrator = new PanelAdministrator(navigator, user, control);
 		list = new PanelList(navigator, control);
 		layout.addComponent(administrator);
@@ -28,7 +28,7 @@ public class List extends CustomComponent implements View{
 	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
