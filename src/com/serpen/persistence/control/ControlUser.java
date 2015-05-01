@@ -29,8 +29,6 @@ public class ControlUser {
 	 */
 	private Transaction transaction;
 
-	private final String [][] SELECT_LIST ={{"lista","rol"},{"nickname","union"}};
-
 	/**
 	 * Constructor de la clase ControlUser.java
 	 * @param session sesion
@@ -51,7 +49,6 @@ public class ControlUser {
 	public void insert (int nickname, String pasword, String answer, Role role)
 			throws ErrorConnection{
 		try{
-
 			User user = new User();
 			user.setNickname(nickname);
 			user.setPassword(pasword);
@@ -61,8 +58,6 @@ public class ControlUser {
 
 			session.save(user);
 			transaction.commit();
-			session.flush();
-			session.clear();
 
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo insertar el dato"
@@ -99,59 +94,28 @@ public class ControlUser {
 	 * @return usuarios
 	 * @throws ErrorConnection
 	 */
-	public List<User> list(int rol) throws ErrorConnection{
+	public List<User> listByRol(Role rol) throws ErrorConnection{
 		try{
-			String sql = "from com.serpen.logic.entity.User u " +
-					"WHERE u.rol.id = "+ rol;
+		String sql = "from com.serpen.logic.entity.User u " +
+				 "WHERE u.rol.id = "+ 4;
+		
+		List<User> listaUsuario = session.createQuery(sql).list();
 
-			List<User> listaUsuario = session.createQuery(sql).list();
-
-			return listaUsuario;
+		return listaUsuario;
 		}catch(Exception e){
 			throw new ErrorConnection("No se pudo realizar la consulta"
 					+ " Causa: "+e.getCause());
 		}
 	}
-	/**
-	 * metodo que permite listar los usuarios decuerdo a una palabra clave que 
-	 * representa el nickname
-	 * se haceun filtrado por nikname
-	 * @param nickname
-	 * @return
-	 */
-	public List<User> list(String nickname){
-		String sql="from com.serpen.logic.entity.User where nickname like '%"+nickname+"%'";
-		List<User> users = session.createQuery(sql).list();
-		return users;
-
-	}
-	public List<User> list(String nickname, String rol){
-
-		String sql="from com.serpen.logic.entity.User u WHERE u.nickname like '%"+nickname+"%'"
-				+" AND u.rol.name = '"+ rol+"'";
-		List<User> users = session.createQuery(sql).list();
-		return users;
-	}
-
-	public List<User> list(int estdoNickname, int estadoRol, String nickname, String rol,ControlRole role) throws ErrorConnection{
-		try{
-			switch (SELECT_LIST[estdoNickname][estadoRol]) {
-			case "lista":
-				return list();
-			case "rol":
-				return list(role.consultName(rol).getId());
-			case "nickname":
-				return list(nickname);
-			case "union":
-				return list(nickname, rol);
-
-			default:
-				return null;
-			}
-		}catch(Exception e){
-			throw new ErrorConnection("No se pudo realizar la consulta"
-					+ " Causa: "+e.getCause());
-		}
+	
+	public List<User> listByNickname(int nickname){
+		String sql="from com.serpen.logic.entity.User u "
+				+ "WHERE u.nickname LIKE %"+nickname+"%";
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.like("answer", "%D%"));
+		//List<User> users =  session.createQuery(sql).list();
+		return criteria.list();
+		
 	}
 	/**
 	 * metodo para consultar un usuario segun su nickname
@@ -200,7 +164,7 @@ public class ControlUser {
 	 */
 	public void remove(int nickname) throws ErrorConnection{
 		try{
-			Transaction transac = session.beginTransaction();
+			// Transaction transaction = session.beginTransaction();
 			User user = consult(nickname);
 			System.out.println(user);
 			ControlHistoryUser controlHistoryUser = new ControlHistoryUser(session, transaction);
@@ -208,7 +172,7 @@ public class ControlUser {
 
 
 			session.delete(user);
-			transac.commit();
+			//transaction.commit();
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo eliminar el usuario "
 					+ "Causa: "+ e.getCause());

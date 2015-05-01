@@ -23,10 +23,7 @@ public class ControlRole {
 	}
 
 	public void insert(String name) throws ErrorConnection{
-		
-        Session sesion = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = sesion.beginTransaction();
-        
+
 		try{
 			//Transaction transaction = sesion.beginTransaction();
 			Role role = new Role();
@@ -41,9 +38,6 @@ public class ControlRole {
 	}
 
 	public List<Role> list() throws ErrorConnection{
-		
-        Session sesion = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = sesion.beginTransaction();
 
 		try{
 			List<Role> listRole = sesion.createQuery(
@@ -67,20 +61,12 @@ public class ControlRole {
 	}
 	
 	public List<Role> listRole(String name){
-		
-        Session sesion = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = sesion.beginTransaction();
-        
 		Criteria criteria = sesion.createCriteria(Role.class);
 		criteria.add(Restrictions.like("name", "%"+name+"%"));
 		return criteria.list();
 	}
 
 	public Role consult(int id) throws ErrorConnection{
-		
-        Session sesion = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = sesion.beginTransaction();
-        
 		try{
 			Role role = new Role();
 			role = (Role) sesion.load(Role.class,id);
@@ -99,37 +85,28 @@ public class ControlRole {
 	}
 
 	public Role consultName(String name) throws ErrorConnection{
-		
-        Session sesion = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = sesion.beginTransaction();
-		
-		Criteria criteria = sesion.createCriteria(Role.class);
-		criteria.add(Restrictions.like("name", name));
-		return (Role) criteria.list().get(0);
-//		try{
-//			Role role = (Role) sesion.load(Role.class,name);
-//			System.out.println(role);
-//			//		sesion.close();
-//			if(role != null){
-//				return role;
-//			}
-//			else{
-//				throw new ErrorConnection("no se encnto ningun rol");
-//			}
-//		}catch(Exception e){
-//			throw new ErrorConnection("no se pudo realizar la conexion "
-//					+ "Causa: " + e.getCause());
-//
-//		}
+		try{
+			Role role = new Role();
+			role = (Role) sesion.load(Role.class,name);
+			System.out.println(role);
+			//		sesion.close();
+			if(role != null){
+				return role;
+			}
+			else{
+				throw new ErrorConnection("no se encnto ningun rol");
+			}
+		}catch(Exception e){
+			throw new ErrorConnection("no se pudo realizar la conexion "
+					+ "Causa: " + e.getCause());
+
+		}
 	}
 
 
 	public void remove(int id, ControlHistoryRole controlHistoryRole,
 			ControlUser controlUser, ControlHistoryUser controlHistoryUser) throws ErrorConnection{
-		
-        Session sesion = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = sesion.beginTransaction();
-//		Transaction transaction = sesion.beginTransaction();
+		Transaction transaction = sesion.beginTransaction();
 
 		//		//----------- Falta (o"o) ---------------------
 		//		Role role= new Role();
@@ -155,12 +132,9 @@ public class ControlRole {
 	}
 
 	public void upDate(int id,String nombre)throws ErrorConnection{
-		
-        Session sesion = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = sesion.beginTransaction();
 
 		try{
-//			Transaction transaction = sesion.beginTransaction();
+			Transaction transaction = sesion.beginTransaction();
 			Role role = new Role();
 			role.setId(id);
 			role.setName(nombre);  
@@ -173,21 +147,30 @@ public class ControlRole {
 		}
 	}
 
-//	public static void main(String[] args) {
-//
-//		Session sesion = HibernateUtil.getSessionFactory().openSession();
-//		Transaction transaction = sesion.beginTransaction();
-//		ControlRole rol = new ControlRole(sesion,transaction);
-//
-//		try {
-//			System.out.println(rol.consultName("Administrador"));
-//			
-//
-//		} catch (ErrorConnection e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//
-//	}
+	public static void main(String[] args) {
+
+		Session sesion = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = sesion.beginTransaction();
+		ControlRole rol = new ControlRole(sesion,transaction);
+
+		try {
+
+			rol.list();
+
+			//        	rol.remove("Diana");
+			//        	rol.list();
+			//			rol.insert("Felipe");
+			//        	rol.consult(2);
+			//        	rol.consultName("Diana");------> malll 
+			//rol.upDate(2, "NNNN");
+			//sesion.close();
+
+
+		} catch (ErrorConnection e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+	}
 }

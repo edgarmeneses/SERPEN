@@ -78,17 +78,17 @@ public class RestorePassword extends CustomComponent implements View {
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				if(txtNewPassword.getValue().equals(txtConfirm.getValue())){
-
-
-					try {
+//					System.out.println("Agrega la contraseña ");
+					
+                    try {
 						control.getUser().upDate(user.getNickname(), txtNewPassword.getValue(), user.getAnswer());
-					} catch (ErrorConnection e) {
+						Notification.show("Contraseña Cambiada Satisfactoriamente");
+						navigator.addView(Login.NAMElOGUEO, new Login(navigator,control) );
+						navigator.navigateTo(Login.NAMElOGUEO);
+                    } catch (ErrorConnection e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						System.out.println("causa: " + e.getCause());
 					}					
-					Notification.show("Contraseña Cambiada Satisfactoriamente");
-					navigator.addView(Login.NAMElOGUEO, new Login(navigator,control) );
-					navigator.navigateTo(Login.NAMElOGUEO);
 				}else{
 					txtNewPassword.setValue("");
 					txtConfirm.setValue("");

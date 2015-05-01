@@ -19,9 +19,9 @@ public class ControlHistoryRole {
 		this.sesion = sesion;
 		this.transaction = transaction;
 	}
-
+	
 	public void insert(int rol, String nombre){
-
+		
 	}
 
 	public List<RoleHistory> listHystory() throws ErrorConnection{
@@ -46,6 +46,7 @@ public class ControlHistoryRole {
 		RoleHistory roleHistory=new RoleHistory();
 		roleHistory = (RoleHistory) sesion.load(RoleHistory.class, 1);
 		System.out.println(roleHistory);
+		//	        sesion.close();
 
 		if(roleHistory != null){
 			return roleHistory;
@@ -54,18 +55,19 @@ public class ControlHistoryRole {
 			throw new ErrorConnection("no se encnto ningun rol");
 		}
 	}
-
+	
 	public static void main(String[] args) {
-
+		
 		Session sesion = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = sesion.beginTransaction();
-		ControlHistoryRole hrole = new ControlHistoryRole(sesion, transaction);
-
-		try {
-
-			hrole.listHystory();
+        ControlHistoryRole hrole = new ControlHistoryRole(sesion, transaction);
+        
+ try {
+			
+	 		hrole.listHystory();
+//	 		hrole.consult(1);
 			sesion.close();
-
+			
 
 		} catch (ErrorConnection e) {
 			// TODO Auto-generated catch block
