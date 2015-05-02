@@ -35,7 +35,7 @@ public class PanelControlList extends Panel{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				WindowsEditUser windEdit = new WindowsEditUser(navigator, control);
+				WindowsEditUser windEdit = new WindowsEditUser(navigator, control,user);
 				UI.getCurrent().addWindow(windEdit);
 			}
 		});

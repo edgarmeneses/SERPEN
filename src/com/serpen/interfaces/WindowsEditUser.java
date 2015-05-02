@@ -10,14 +10,14 @@ public class WindowsEditUser extends Window{
 
 	private PanelEditUsers editUsers;
 
-	public WindowsEditUser(Navigator navigator, ControlGeneral control) {
+	public WindowsEditUser(Navigator navigator, ControlGeneral control, User user) {
 		// TODO Auto-generated constructor stub
 		super("Editar Usuario");
 		center();
 		setWidth("600px");
 		setHeight("600px");
 		VerticalLayout layout = new VerticalLayout();
-		this.editUsers = new PanelEditUsers(navigator, control);
+		this.editUsers = new PanelEditUsers(navigator, control,user);
 		layout.addComponent(editUsers);
 		layout.setMargin(true);
 		setContent(layout);

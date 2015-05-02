@@ -12,7 +12,7 @@ public class User {
 	public static final char TIPO_ESTADO_ACTIVO = 'A';
 
 	public User() {
-
+		rol = new Role();
 
 	}
 	public char getEstado() {
