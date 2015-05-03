@@ -13,6 +13,7 @@ import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
@@ -104,13 +105,20 @@ public class PanelConfiguration  extends Panel{
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-
+								
 				try {
-					control.getUser().upDate(0, txtNewPassword.getValue(), txtNewSecurityAns.getValue());
+					control.getUser().upDate(user.getNickname(), txtNewPassword.getValue(),txtNewSecurityAns.getValue());
+					
+					System.out.println("COMPROBAR");
+					System.out.println(user.getPassword());
+					System.out.println(user.getAnswer());
+					System.out.println("----------------------");
+					Notification.show("Contraseña Cambiada Satisfactoriamente");
 				} catch (ErrorConnection e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					System.out.println("causa: " + e.getCause());
+				
+			}
 			}
 		});
 		
