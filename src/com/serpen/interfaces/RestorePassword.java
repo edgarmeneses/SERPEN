@@ -20,9 +20,20 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Restaurar
+ *constrasela extiende de custom Componente e implementa  View
+ */
 public class RestorePassword extends CustomComponent implements View {
 
+	/**
+	 * Atributos de la clase restore Password
+	 */
 	private Label lblLogo;
 	private Label lblNewPassword;
 	private Label lblConfirm;
@@ -33,20 +44,24 @@ public class RestorePassword extends CustomComponent implements View {
 	private Button btnCancel;
 	private Image  imgSecurity;
 	private Image imgPasword;
-
 	private Navigator navigator;
 	private ControlGeneral control;
 	private User user;
-
 	public static final String NAMERESTORE="Pregunta";
 
+	/**
+	 * Constructor de la clase Restore Password que pide por parametro:
+	 * @param navigator
+	 * @param control
+	 * @param user
+	 * Instancia los componentes que se van a pintar en la clase de restaurar constraseña
+	 */
 	public RestorePassword(Navigator navigator, ControlGeneral control, User user){
 
 		this.navigator=navigator;
 		this.control=control;
 
 		FormLayout layoutPrincipal = new FormLayout();
-
 
 		FormLayout layoutPanel = new FormLayout();
 

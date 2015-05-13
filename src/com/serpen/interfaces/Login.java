@@ -24,9 +24,20 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de listar rol
+ *extiende de custom Componente e implementa  View
+ */
 public class Login extends CustomComponent implements View{
 
+	/**
+	 * Atributos de la clase Login
+	 */
 	public static final String NAMElOGUEO="";
 	private Image icon;
 	private Image imgUserName;
@@ -39,6 +50,12 @@ public class Login extends CustomComponent implements View{
 	private Navigator navigator;
 	private ControlGeneral control;
 
+	/**
+	 * Constructor de la clase Login que por parametro pide
+	 * @param navigator
+	 * @param control
+	 * Intancia los componentes  que se van a pintar de la clase Login
+	 */
 	public Login(Navigator navigator, ControlGeneral control){
 
 		this.navigator=navigator;
@@ -99,7 +116,7 @@ public class Login extends CustomComponent implements View{
 					System.out.println("rol nuevo " +rol);
 
 					if(validateUser(user)){
-						navigate(user);
+						navigate(user);//llama la navegacion
 					}
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
@@ -168,7 +185,6 @@ public class Login extends CustomComponent implements View{
 			Notification.show("Rol inválido contacte a su administro ");
 			break;
 		}
-
 	}
 	/**
 	 * metdo que evalua si la contraseña del usuario conicide con la ingresada 

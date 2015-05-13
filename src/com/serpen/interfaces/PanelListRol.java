@@ -19,9 +19,20 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Panel control List
+ *extiende de Panel
+ */
 public class PanelListRol extends Panel{
 
+	/**
+	 * Atributos de la clase panelControlList 
+	 */
 	private Label lblUser;
 	private TextField txtUser;
 	private ComboBox boxRol;
@@ -33,6 +44,11 @@ public class PanelListRol extends Panel{
 	private Navigator navigator;
 	private ControlGeneral controlGeneral;
 
+	/**
+	 * Constructor que se encarga de pedir por parametro 
+	 * @param Navegator
+	 * @param  Control General
+	 */
 	public PanelListRol(Navigator navigator, ControlGeneral control){
 
 		this.navigator=navigator;

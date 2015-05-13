@@ -11,17 +11,38 @@ import com.serpen.error.connection.ErrorConnection;
 import com.serpen.logic.entity.Role;
 import com.serpen.logic.entity.RoleHistory;
 import com.serpen.persistence.conf.HibernateUtil;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *  Clase  que contiene el control Role
+ *
+ */
 public class ControlRole {
 
+	/**
+	 * atributos de la clase control Role
+	 */
 	Session sesion;
 	Transaction transaction;
 
+	/**
+	 * Constructor de la clase Role que pide por parametro
+	 * @param sesion
+	 * @param transaction
+	 */
 	public ControlRole(Session sesion, Transaction transaction) {
 		this.sesion = sesion;
 		this.transaction = transaction;
 	}
 
+	/**
+	 * Metodo que se encarga de insertar un rol
+	 * @param name
+	 * @throws ErrorConnection
+	 */
 	public void insert(String name) throws ErrorConnection{
 
 		try{
@@ -37,6 +58,11 @@ public class ControlRole {
 
 	}
 
+	/**
+	 * Metodo que se encarga de listar de un rol
+	 * @return lista
+	 * @throws ErrorConnection
+	 */
 	public List<Role> list() throws ErrorConnection{
 
 		try{
@@ -60,6 +86,12 @@ public class ControlRole {
 		}
 	}
 
+	/**
+	 * Metodo que se encarga de consultar por  el id de un rol
+	 * @param id
+	 * @return
+	 * @throws ErrorConnection
+	 */
 	public Role consult(int id) throws ErrorConnection{
 		try{
 			Role role = new Role();
@@ -79,6 +111,12 @@ public class ControlRole {
 		}
 	}
 
+	/**
+	 * Metodo que se encarga de consultar por el nombre de un rol 
+	 * @param name
+	 * @return rol
+	 * @throws ErrorConnection
+	 */
 	public Role consultName(String name) throws ErrorConnection{
 	     
 		Criteria criteria = sesion.createCriteria(Role.class);
@@ -87,32 +125,24 @@ public class ControlRole {
 	}
 
 
+	/**
+	 * Metodo que se encarga de elminaar un Rol pidiendo por parametro un id
+	 * @param id
+	 * @throws ErrorConnection
+	 */
 	public void remove(int id) throws ErrorConnection{
 		Transaction transaction = sesion.beginTransaction();
-
-		//		//----------- Falta (o"o) ---------------------
-		//		Role role= new Role();
-		//		//        role.setId(id);
-		//		role.setName(name);
-
 		Role role = consult(id);
-		//		RoleHistory roleHistory = new RoleHistory();
-		//		roleHistory.setName(role.getName());
-		//		roleHistory.setRole(role.getId());
-
-		//ControlHistoryRole controlHistoryRole.insert(role.getId(), role.getName());
-
-		//ControlUser controlUser.removeRol(role.getId(), controlHistoryUser);
-
 		sesion.delete(role);
 		transaction.commit();
-		//		sesion.delete(role);
-		//		sesion.save(roleHistory);
-		//		transaction.commit();
-		//		//sesion.close();	
-		//		throw new ErrorConnection("No se encuentra el rol que se desea eliminar");
 	}
 
+	/**
+	 * Metodo que se encarga de actualizar un rol
+	 * @param id
+	 * @param nombre
+	 * @throws ErrorConnection
+	 */
 	public void upDate(int id,String nombre)throws ErrorConnection{
 
 		try{

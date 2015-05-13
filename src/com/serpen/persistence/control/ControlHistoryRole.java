@@ -8,22 +8,45 @@ import com.serpen.logic.entity.RoleHistory;
 import com.serpen.persistence.conf.HibernateUtil;
 
 import java.util.List;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *  Clase  que contiene el control de historial role
+ *
+ */
 public class ControlHistoryRole {
 
+	/**
+	 * Atributos de la clase control Historial Rol
+	 */
 	Session sesion;
 	Transaction transaction;
-
-
+	/**
+	 * Constructor de la clase control Historial Rol
+	 * @param sesion
+	 * @param transaction
+	 */
 	public ControlHistoryRole(Session sesion, Transaction transaction) {
 		this.sesion = sesion;
 		this.transaction = transaction;
 	}
-	
+	/**
+	 * Metodo que se encarga de insertar un Historial
+	 * @param rol
+	 * @param nombre
+	 */
 	public void insert(int rol, String nombre){
 		
 	}
 
+	/**
+	 * Metodo que lista los historiales de role
+	 * @return
+	 * @throws ErrorConnection
+	 */
 	public List<RoleHistory> listHystory() throws ErrorConnection{
 
 		List<RoleHistory> listRole = sesion.createQuery(
@@ -41,6 +64,12 @@ public class ControlHistoryRole {
 		}
 
 	}
+	/**
+	 * Metodo que se encarga de consultar un historial de usuario
+	 * @param id
+	 * @return
+	 * @throws ErrorConnection
+	 */
 	public RoleHistory consult(int id)throws ErrorConnection{
 
 		RoleHistory roleHistory=new RoleHistory();

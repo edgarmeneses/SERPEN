@@ -21,28 +21,39 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component.Event;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Administrador
+ *extiende de custom Componente e implementa  View
+ */
 public class Administrator extends CustomComponent implements View{
 
+	/**
+	 * Atributos de la clase Administrador 
+	 */
 	public static final String NAMEADMINISTRATOR="Administrador";
 	private PanelAdministrator paneAdministrator;
 	private User user;
 	private ControlGeneral control;
 
+	/**
+	 * Constructor de la clase Administrador  que  pide por parametro 
+	 * @param navigator
+	 * @param user
+	 * @param control
+	 */
 	public Administrator (Navigator navigator, User user, ControlGeneral control){
-
 		paneAdministrator = new PanelAdministrator(navigator,user,control);
 		setCompositionRoot(paneAdministrator);
 		setSizeFull();
 	}
-
-
 	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
 
 	}
-
-
-
 }

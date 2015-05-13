@@ -8,14 +8,32 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Panel;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Rol
+ *extiende de Panel
+ */
 public class PanelButtonRol extends Panel{
 
+	/**
+	 * Atributos de la  la clase Panel Button Rol qu
+	 */
 	private Button btnDelete;
 	private Role role;
 	private ControlGeneral control;
 	private PanelListRol listRol;
 	
+	/**
+	 * Constructor de la clase Panel Button que pide por parametros 
+	 * @param role
+	 * @param control
+	 * @param listRol
+	 * instancia los componenstes de la clase Rol 
+	 */
 	public PanelButtonRol(Role role, ControlGeneral control, PanelListRol listRol){
 		
 		this.role = role;
@@ -44,5 +62,4 @@ public class PanelButtonRol extends Panel{
 		this.setSizeFull();
 
 	}
-
 }

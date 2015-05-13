@@ -23,9 +23,20 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.bcel.generic.RETURN;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Panel control List
+ *extiende de Panel
+ */
 public class PanelList extends Panel{
 
+	/**
+	 * Atributos de la clase Panel List
+	 */
 	private Label lblUser;
 	private TextField txtUser;
 	private ComboBox boxRol;
@@ -38,6 +49,11 @@ public class PanelList extends Panel{
 	private ControlGeneral control;
 
 
+	/**
+	 * Constructor de la clase panel lista
+	 * @param navigator
+	 * @param control
+	 */
 	public PanelList(Navigator navigator, ControlGeneral control){
 
 		this.navigator = navigator;
@@ -210,6 +226,10 @@ public class PanelList extends Panel{
 		}
 }
 
+	/**
+	 * Metodo que se encarda de mirar los estados de un rol
+	 * @return
+	 */
 	private int stateRole(){
 
 		if(boxRol.getValue().toString().equals("Seleccionar")){
@@ -220,6 +240,10 @@ public class PanelList extends Panel{
 
 	}
 
+	/**
+	 * Permite mirar los estados de lo ombrs de un usuario
+	 * @return
+	 */
 	private int stateNickname(){
 
 		if(txtUser.getValue().equals("")){

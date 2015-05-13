@@ -19,10 +19,20 @@ import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Panel configuracion
+ *extiende de Panel
+ */
 public class PanelConfiguration  extends Panel{
 
-	//	
+	/**
+	 * Atributos de la clase panelConfiguracion 
+	 */
 	private Label lbLabelPrincipal;
 	private Image imgPasword;
 	private Label lblNewPassword;
@@ -37,6 +47,13 @@ public class PanelConfiguration  extends Panel{
 	private User user;
 	private ControlGeneral control;
 
+	/**
+	 * Constructor  de la clase que  tiene por parametro  
+	 * @param navigator
+	 * @param user
+	 * @param control
+	 * instancia los components que se que e pintan en el panel de configuracion 
+	 */
 	public PanelConfiguration(Navigator navigator, User user, ControlGeneral control){
 
 		this.navigator=navigator;

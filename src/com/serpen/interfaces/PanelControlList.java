@@ -10,9 +10,20 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.UI;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Panel control List
+ *extiende de Panel
+ */
 public class PanelControlList extends Panel{
 
+	/**
+	 * Atributos de la clase panelControlList 
+	 */
 	private Button btnUpdate;
 	private Button btnRemove;
 	private Navigator navigator;
@@ -20,6 +31,14 @@ public class PanelControlList extends Panel{
 	private ControlGeneral cGeneral;
 	private PanelList list;
 
+	/**
+	 * Constructor de la clase Panel Controlque por parametro pide
+	 * @param navigator
+	 * @param control
+	 * @param user
+	 * @param list
+	 * Instancia los componenes que se deben pintar  en la clase List
+	 */
 	public PanelControlList(Navigator navigator, ControlGeneral control, User user, PanelList list) {
 		// TODO Auto-generated constructor stub
 		this.user = user;
@@ -58,6 +77,10 @@ public class PanelControlList extends Panel{
 
 	}
 
+	/**
+	 * Metodo removerUser que se encarfa de remover un 
+	 * usuario de la base de datos
+	 */
 	public void removeUser(){
 
 		try {

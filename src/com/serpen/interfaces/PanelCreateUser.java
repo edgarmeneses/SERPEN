@@ -36,8 +36,20 @@ import com.vaadin.ui.Button.ClickEvent;
  *
  */
 @Theme("themeCreateUser")
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Panel create User
+ *extiende de Panel
+ */
 public class PanelCreateUser extends Panel implements View{
 
+	/**
+	 * Atributos de la clase panel create user
+	 */
 	private Label lblCreateUser;
 	private TextField txtNickname;
 	private PasswordField txtPassword;
@@ -51,6 +63,12 @@ public class PanelCreateUser extends Panel implements View{
 	private Navigator navigator;
 	private ControlGeneral control;
 
+	/**
+	 * Constructor que se pide por parametro 
+	 * @param navigator
+	 * @param control
+	 * Instancia los componentes que se van a pintar en la clase Create User
+	 */
 	public PanelCreateUser (Navigator navigator, ControlGeneral control) {
 
 		this.navigator = navigator;
@@ -162,7 +180,13 @@ public class PanelCreateUser extends Panel implements View{
 		// TODO Auto-generated method stub
 
 	}
+	
 
+    /**
+     * metodo que se encarga de listar los roles 
+     * @return
+     * @throws ErrorConnection
+     */
 	public List<String> rolList() throws ErrorConnection{
 		List<Role> role;
 

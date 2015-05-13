@@ -18,8 +18,15 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.UI;
-
-//
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase  principal de un proyecto de vaadin interfaz en la que se llamana las ventanas 
+ *
+ */
 
 @Theme("Login")
 public class SerpenpruebaUI extends UI{
@@ -59,5 +66,4 @@ public class SerpenpruebaUI extends UI{
 		navigator.addView(Question.NAMEQUESTION, new Question(navigator, control));
 
 	}
-
 }

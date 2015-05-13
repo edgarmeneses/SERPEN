@@ -14,8 +14,12 @@ import com.serpen.logic.entity.User;
 import com.serpen.persistence.conf.HibernateUtil;
 import com.vaadin.ui.Notification;
 /**
- * Clase que permite controlar las acciones de la clase Usuario.java
- * @author Edgar Meneses
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *  Clase  que contiene el control Role
  *
  */
 public class ControlUser {

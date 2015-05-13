@@ -25,10 +25,20 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickListener;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Panel editar User
+ *extiende de Panel
+ */
 public class PanelEditUsers  extends Panel{
 
-	//
+	/**
+	 * Artributos de la clase Editar usuario
+	 */
 	private Label lbLabelPrincipal;
 	private Image imgPasword;
 	private Label lblNewPassword;
@@ -52,15 +62,28 @@ public class PanelEditUsers  extends Panel{
 	private ControlGeneral control;
 	private User user;
 
+	/**
+	 * Constructor de la clase Editar Usuario que por parametro pide
+	 * @param navigator
+	 * @param control
+	 */
 	public PanelEditUsers(Navigator navigator, ControlGeneral control){
 		init(navigator, control);
 	}
-	
+	/**
+	 * Constructor de la clase Editar Usuario que por parametro pide
+	 * @param navigator
+	 * @param control
+	 */
 	public PanelEditUsers(Navigator navigator, ControlGeneral control, User user){
 		init(navigator, control, user);
 	}
 	
-	
+	/**
+	 * Metodoo que se encarga de  instanciar y configurar  Usuarios
+	 * @param navigator
+	 * @param control
+	 */
 	private void init(Navigator navigator, ControlGeneral control){
 		this.navigator=navigator;
 		this.control=control;

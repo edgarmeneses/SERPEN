@@ -1,6 +1,19 @@
 package com.serpen.logic.entity;
 
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase  que contiene las caracteristicas de un Historial 
+ *de usuario
+ *
+ */
 public class UserHistory {
+	/**
+	 * Atributos de la clase user History
+	 */
 	private int id;
 	private int nickname;
 	private char estado;
@@ -8,9 +21,19 @@ public class UserHistory {
 
 	public static final char TIPO_ESTADO_INACTIVO= 'I'; 
 
+	/**
+	 * Constructor vacio de la clase rol
+	 */
 	public UserHistory() {
 
 	}
+	/**
+	 * Constructor de la clase Historial user
+	 * @param id
+	 * @param nickname
+	 * @param estado
+	 * @param rol
+	 */
 	public UserHistory(int id, int nickname, char estado, int rol) {
 		super();
 		this.id = id;
@@ -18,6 +41,10 @@ public class UserHistory {
 		this.estado = estado;
 		this.rol = rol;
 	}
+	/**
+	 * Getters y Setters de la clase Role 
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
@@ -42,6 +69,9 @@ public class UserHistory {
 	public void setRol(int rol) {
 		this.rol = rol;
 	}
+	/**
+	 * To String de la clase  historial de  usuario
+	 */
 	@Override
 	public String toString() {
 		return "UserHistory [id=" + id + ", nickname=" + nickname + ", estado="

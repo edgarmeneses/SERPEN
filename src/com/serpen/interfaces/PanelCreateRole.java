@@ -15,9 +15,20 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de Panel control List
+ *extiende de Panel
+ */
 public class PanelCreateRole extends Panel{
 
+	/**
+	 * Atributos de la clase Panel Create Role 
+	 */
 	private Image imgNewRole;
 	private  Label lblCreateRole;
 	private Label lblNewRole;
@@ -27,6 +38,13 @@ public class PanelCreateRole extends Panel{
 	private Panel pnlPrincipal;
 	private Navigator navigator;
 
+	/**
+	 * Constructor que se pide por parametros 
+	 * @param navigator
+	 * @param control
+	 * Instancia de los componentes que se van a pintar en la clase
+	 * create rol
+	 */
 	public PanelCreateRole(Navigator navigator, ControlGeneral control) {
 		// TODO Auto-generated constructor stub
 

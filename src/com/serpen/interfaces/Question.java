@@ -24,9 +24,20 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ *Clase de la interfaz que se encarga de pintar la ventana de de la prguntaS User
+ *extiende de custom Componente e implementa  View
+ */
 public class Question extends  CustomComponent implements ClickListener,View {
 
+	/**
+	 * Atrbutos de la calse questions
+	 */
 	public static final String NAMEQUESTION ="¿olvido su contraseña?";
 	private Label lblDescription;
 	private Label lblDescription2;
@@ -40,6 +51,12 @@ public class Question extends  CustomComponent implements ClickListener,View {
 	private Navigator navigator;
 	private ControlGeneral control;
 
+	/**
+	 * Constructor de la clase  Question que por parametro pide 
+	 * @param navigator
+	 * @param control
+	 * Instancia los componentes que se van  ha a pintar
+	 */
 	public Question(Navigator navigator, ControlGeneral control){
 
 		this.navigator=navigator;
@@ -149,6 +166,9 @@ public class Question extends  CustomComponent implements ClickListener,View {
 
 	}
 
+	/**
+	 * Evento del button
+	 */
 	@Override
 	public void buttonClick(ClickEvent event) {
 		// TODO Auto-generated method stub

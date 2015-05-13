@@ -1,6 +1,5 @@
 package com.serpen.interfaces;
 
-
 import com.serpen.logic.entity.User;
 import com.serpen.persistence.control.ControlGeneral;
 import com.vaadin.event.MouseEvents.ClickEvent;
@@ -14,9 +13,20 @@ import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Panel;
-
+/**
+ * Universidad Pedagogica y Tecnologica de Colombia 
+ * @author Eliana Ayala
+ *         Daniela Blanco 
+ *         Diana Gonzalez
+ *         Edgar Meneses
+ * Panel de la interfaz que contiene  los componentes que se 
+ * van a pintar en la ventana de Adminsitrador
+ * */
 public class PanelAdministrator extends Panel{
 
+	/**
+	 * Atributos de la clase panel, creacion de componentes
+	 */
 	private Image Imglogo;
 	private Panel pnlOption;
 	private Image ImgnewUser;
@@ -28,6 +38,13 @@ public class PanelAdministrator extends Panel{
 	private Navigator navigator;
 	private User user;
 	private ControlGeneral control;
+	/**
+	 * Constructor de la clase Panel que pide por parametro
+	 * @param navigator
+	 * @param user
+	 * @param control
+	 * Instancia los componentes de la clase de Administrdor
+	 */
 	public PanelAdministrator (Navigator navigator, User user, ControlGeneral control){
 
 		this.navigator=navigator;
@@ -63,6 +80,9 @@ public class PanelAdministrator extends Panel{
 		ImgnewUser =new Image (null, resource1);
 		ImgnewUser.addClickListener(new ClickListener() {
 
+			/**
+			 * Acction listener de  la imagen User
+			 */
 			@Override
 			public void click(ClickEvent event) {
 				// TODO Auto-generated method stub
@@ -86,8 +106,7 @@ public class PanelAdministrator extends Panel{
 				navigator.navigateTo(List.NAMELIST);
 			}
 		});
-
-
+		
 		this.imgEdit= new Image("Editar");
 		ThemeResource resource3 = new ThemeResource("../Imagen/editar.png");
 		imgEdit =new Image (null, resource3);
@@ -138,8 +157,6 @@ public class PanelAdministrator extends Panel{
 			}
 
 		});
-
-
 		this.imgRol = new Image("Rol");
 		ThemeResource resource6 = new ThemeResource("../Imagen/rol.png");
 		imgRol = new Image(null , resource6);
