@@ -153,9 +153,7 @@ public class ControlUser {
 		String sql="from com.serpen.logic.entity.User u WHERE u.nickname like '%"+nickname+"%'"
 				+" AND u.rol.name = '"+ rol+"'";
 		List<User> users = session.createQuery(sql).list();
-		//Criteria criteria = session.createCriteria(User.class);c
-		//criteria.add(Restrictions.like("answer", "%D%"));
-		//List<User> users =  session.createQuery(sql).list();
+
 		return users;
 	}
 	

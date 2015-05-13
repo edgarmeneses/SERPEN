@@ -98,13 +98,7 @@ public class ControlRole {
 			role = (Role) sesion.load(Role.class,id);
 			System.out.println(role);
 			return role;
-			//		sesion.close();
-//			if(role != null){
-//				return role;
-//			}
-//			else{
-//				throw new ErrorConnection("no se encnto ningun rol");
-//			}
+
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo conectar al rol"
 					+ " Causa: "+e.getCause());

@@ -437,48 +437,7 @@ public class PanelEditUsers  extends Panel{
 		btnCancel.setHeight("50px");
 
 
-//		btnSearch= new Button("Buscar");
-//		btnSearch.setWidth("100px");
-//		btnSearch.setHeight("50px");
-//		btnSearch.setVisible(true);
-//		btnSearch.addClickListener(new ClickListener() {
-//
-//			@Override
-//			public void buttonClick(ClickEvent event) {
-//				// TODO Auto-generated method stub
-//				try {
-//					User user = control.getUser().consult(Integer.valueOf(txtSearch.getValue()));
-//
-//					txtUser.setValue(String.valueOf(user.getNickname()));
-//					txtUser.setEnabled(false);
-//					txtRol.setValue(user.getRol().getName());
-//					txtRol.setEnabled(false);
-//					txtNewPassword.setValue(user.getPassword());
-//					txtNewSecurityAns.setValue(user.getAnswer());
-//
-//				} catch (NumberFormatException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (ErrorConnection e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//
-//			}
-//		});
-//
-//		lblSearch  = new Label("Usuario");
-//		lblSearch.setWidth("150px");
-//		lblSearch.setHeight("50px");
-//		lblSearch.setVisible(true);
-//
-//		txtSearch= new TextField();
-//		txtSearch.setWidth("150px");
-//		txtSearch.setHeight("50px");
-//		txtSearch.setVisible(true);
-
 		formLayoutEdit.addComponent(lbLabelPrincipal);
-//		formLayoutEdit.addComponent(layoutSearch);
 		formLayoutEdit.addComponent(layoutUser);
 		formLayoutEdit.addComponent(layoutRol);
 		formLayoutEdit.addComponent(layautPassword);
@@ -486,9 +445,6 @@ public class PanelEditUsers  extends Panel{
 		formLayoutEdit.addComponent(layoutBtn);
 
 
-//		layoutSearch.addComponent(lblSearch);
-//		layoutSearch.addComponent(txtSearch);
-//		layoutSearch.addComponent(btnSearch);
 		layautPassword.addComponent(imgPasword);
 		layautPassword.addComponent(lblNewPassword);
 		layautPassword.addComponent(txtNewPassword);
