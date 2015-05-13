@@ -22,7 +22,6 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component.Event;
 /**
- * 
  * Universidad Pedagogica y Tecnologica de Colombia 
  * @author Eliana Ayala
  *         Daniela Blanco 
