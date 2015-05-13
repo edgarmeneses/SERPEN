@@ -107,7 +107,7 @@ public class PanelConfiguration  extends Panel{
 				// TODO Auto-generated method stub
 								
 				try {
-					control.getUser().upDate(user.getNickname(), txtNewPassword.getValue(),txtNewSecurityAns.getValue());
+					control.getUser().upDate(0, txtNewPassword.getValue(), txtNewSecurityAns.getValue());
 					
 					System.out.println("COMPROBAR");
 					System.out.println(user.getPassword());
@@ -117,8 +117,7 @@ public class PanelConfiguration  extends Panel{
 				} catch (ErrorConnection e) {
 					// TODO Auto-generated catch block
 					System.out.println("causa: " + e.getCause());
-				
-			}
+				}
 			}
 		});
 		

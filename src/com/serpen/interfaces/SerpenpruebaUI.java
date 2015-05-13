@@ -38,12 +38,13 @@ public class SerpenpruebaUI extends UI{
 		/**se utiliza cuando la consulta necesita una trasnaccion es decir para
 		 * consultas tipo insert, update, delete
 		 **/
-		Transaction transaction = sesion.beginTransaction();
+		//sesion.beginTransaction().commit();
+		//Transaction transaction = sesion.beginTransaction();
 		/**
 		 * clase control general que permite manejar los metodos de insert, delete, update,
 		 * select... de cada tabla
 		 **/
-		ControlGeneral control = new ControlGeneral(sesion,transaction);
+		ControlGeneral control = new ControlGeneral(sesion,null);
 
 		/**
 		 * navegator se utiliza para crear las navegaciones entre las paginas

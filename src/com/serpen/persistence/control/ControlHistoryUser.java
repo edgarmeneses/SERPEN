@@ -10,12 +10,11 @@ import com.serpen.persistence.conf.HibernateUtil;
 public class ControlHistoryUser {
 	
 	private Session sesion; 
-    private Transaction transaction;
+
     
-    public ControlHistoryUser(Session sesion, Transaction transaction) {
+    public ControlHistoryUser(Session sesion) {
 		// TODO Auto-generated constructor stub
     	this.sesion = sesion;
-    	this.transaction = transaction;
 	}
 
 	public void insert(int nikname, int role ){
@@ -25,6 +24,7 @@ public class ControlHistoryUser {
 		userHistory.setRol(role);
 		
 		sesion.save(userHistory);
+		sesion.beginTransaction().commit();
 		
 	}
 

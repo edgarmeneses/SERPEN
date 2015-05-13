@@ -23,10 +23,6 @@ public class ControlUser {
 	 * sesion de la base de datos
 	 */
 	private Session session;
-	/**
-	 * permite realizar transacciones con la base de datos 
-	 */
-	private Transaction transaction;
 	
 	private final String [][] SELECT_LIST ={{"lista","rol"},{"nickname","union"}};
 
@@ -35,9 +31,8 @@ public class ControlUser {
 	 * @param session sesion
 	 * @param transaction transaccion
 	 */
-	public ControlUser(Session session, Transaction transaction) {
+	public ControlUser(Session session) {
 		this.session = session;
-		this.transaction = transaction;
 	}
 	/**
 	 * metodo que permite insertar un usuario en la tabla Usuario de la base de datos
@@ -58,7 +53,8 @@ public class ControlUser {
 			user.setAnswer(answer);
 
 			session.save(user);
-			transaction.commit();
+			session.beginTransaction().commit();
+			//transaction.commit();
 
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo insertar el dato"
@@ -189,11 +185,11 @@ public class ControlUser {
 		try{
 			User user = consult(nickname);
 			
-			ControlHistoryUser controlHistoryUser = new ControlHistoryUser(session, transaction);
+			ControlHistoryUser controlHistoryUser = new ControlHistoryUser(session);
 			controlHistoryUser.insert(user.getNickname(), user.getRol().getId());
 			
 			session.delete(user);
-			transaction.commit();
+			session.beginTransaction().commit();
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo eliminar el usuario "
 					+ "Causa: "+ e.getCause());
@@ -204,8 +200,9 @@ public class ControlUser {
 		List<User> list = list();
 		for (User user : list) {
 			remove(user.getNickname());
-			transaction.commit();
 		}
+		session.beginTransaction().commit();
+
 
 	}
 
@@ -236,29 +233,15 @@ public class ControlUser {
 
 			session.update(user);
 
-			transaction.commit();
-			session.close();
+			session.beginTransaction().commit();
 		}catch(Exception e){
 			throw new ErrorConnection("no se pudo editar el Usuario "
 					+ "Causa: "+ e.getCause());
 		}
 	}
-public static void main(String[] args) {
-	
-	try {
-		Session sesion = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = sesion.beginTransaction();
-		
-		ControlUser controlUser = new ControlUser(sesion, transaction);
-		controlUser.remove(32);
-		
-	} catch (ErrorConnection e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+
 	 
 	
-	
-}
+
 
 }
