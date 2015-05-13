@@ -21,16 +21,16 @@ public class ControlHistoryUser {
 	 * Atributos de la clase control Historial user
 	 */
 	private Session sesion; 
-    private Transaction transaction;
+   
     /**
 	 * Constructor de la clase control Historial Rol
 	 * @param sesion
 	 * @param transaction
 	 */
-    public ControlHistoryUser(Session sesion, Transaction transaction) {
+    public ControlHistoryUser(Session sesion) {
 		// TODO Auto-generated constructor stub
     	this.sesion = sesion;
-    	this.transaction = transaction;
+    	
 	}
 
     /**
@@ -45,6 +45,7 @@ public class ControlHistoryUser {
 		userHistory.setRol(role);
 		
 		sesion.save(userHistory);
+		sesion.beginTransaction().commit();
 		
 	}
 

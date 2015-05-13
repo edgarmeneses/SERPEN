@@ -51,7 +51,7 @@ public class SerpenpruebaUI extends UI{
 		 * clase control general que permite manejar los metodos de insert, delete, update,
 		 * select... de cada tabla
 		 **/
-		ControlGeneral control = new ControlGeneral(sesion,null);
+		ControlGeneral control = new ControlGeneral(sesion);
 
 		/**
 		 * navegator se utiliza para crear las navegaciones entre las paginas
