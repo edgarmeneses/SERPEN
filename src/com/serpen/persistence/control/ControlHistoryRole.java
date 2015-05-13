@@ -23,15 +23,13 @@ public class ControlHistoryRole {
 	 * Atributos de la clase control Historial Rol
 	 */
 	Session sesion;
-	Transaction transaction;
 	/**
 	 * Constructor de la clase control Historial Rol
 	 * @param sesion
 	 * @param transaction
 	 */
-	public ControlHistoryRole(Session sesion, Transaction transaction) {
+	public ControlHistoryRole(Session sesion) {
 		this.sesion = sesion;
-		this.transaction = transaction;
 	}
 	/**
 	 * Metodo que se encarga de insertar un Historial
@@ -82,25 +80,6 @@ public class ControlHistoryRole {
 		}
 		else{
 			throw new ErrorConnection("no se encnto ningun rol");
-		}
-	}
-	
-	public static void main(String[] args) {
-		
-		Session sesion = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = sesion.beginTransaction();
-        ControlHistoryRole hrole = new ControlHistoryRole(sesion, transaction);
-        
- try {
-			
-	 		hrole.listHystory();
-//	 		hrole.consult(1);
-			sesion.close();
-			
-
-		} catch (ErrorConnection e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 }
