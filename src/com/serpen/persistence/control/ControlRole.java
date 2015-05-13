@@ -15,11 +15,11 @@ import com.serpen.persistence.conf.HibernateUtil;
 public class ControlRole {
 
 	Session sesion;
-	Transaction transaction;
+//	Transaction transaction;
 
-	public ControlRole(Session sesion, Transaction transaction) {
+	public ControlRole(Session sesion) {
 		this.sesion = sesion;
-		this.transaction = transaction;
+//		this.transaction = transaction;
 	}
 
 	public void insert(String name) throws ErrorConnection{
@@ -28,8 +28,9 @@ public class ControlRole {
 			//Transaction transaction = sesion.beginTransaction();
 			Role role = new Role();
 			role.setName(name);
-			sesion.save(role);      
-			transaction.commit();
+			sesion.save(role); 
+			sesion.beginTransaction().commit();
+//			transaction.commit();
 		}catch(Exception e){
 
 			throw new ErrorConnection("No se pudo insertar el rol " + "Causa: "+e.getCause());
@@ -105,7 +106,7 @@ public class ControlRole {
 		//ControlUser controlUser.removeRol(role.getId(), controlHistoryUser);
 
 		sesion.delete(role);
-		transaction.commit();
+		sesion.beginTransaction().commit();
 		//		sesion.delete(role);
 		//		sesion.save(roleHistory);
 		//		transaction.commit();
@@ -121,7 +122,8 @@ public class ControlRole {
 			role.setId(id);
 			role.setName(nombre);  
 			sesion.update(role);
-			transaction.commit();
+			sesion.beginTransaction().commit();
+//			transaction.commit();
 			//		sesion.close();
 		}catch(Exception e){
 
@@ -129,29 +131,29 @@ public class ControlRole {
 		}
 	}
 
-	public static void main(String[] args) {
-
-		Session sesion = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = sesion.beginTransaction();
-		ControlRole rol = new ControlRole(sesion,transaction);
-
-		try {
-
-			//rol.list();
-
-			//        	rol.remove("Diana");
-			//        	rol.list();
-			//			rol.insert("Felipe");
-			//        	rol.consult(2);
-			rol.consultName("Andres");
-			//rol.upDate(2, "NNNN");
-			//sesion.close();
-
-
-		} catch (ErrorConnection e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//
+//		Session sesion = HibernateUtil.getSessionFactory().openSession();
+//		Transaction transaction = sesion.beginTransaction();
+//		ControlRole rol = new ControlRole(sesion,transaction);
+//
+//		try {
+//
+//			//rol.list();
+//
+//			//        	rol.remove("Diana");
+//			//        	rol.list();
+//			//			rol.insert("Felipe");
+//			//        	rol.consult(2);
+//			rol.consultName("Andres");
+//			//rol.upDate(2, "NNNN");
+//			//sesion.close();
+//
+//
+//		} catch (ErrorConnection e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 }
