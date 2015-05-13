@@ -24,7 +24,7 @@ public class ControlGeneral {
 	private ControlHistoryUser controlHistoryUser;
 	public ControlGeneral(Session sesion, Transaction transaction) {
 		
-		this.controlRole = new ControlRole(sesion,transaction);
+		this.controlRole = new ControlRole(sesion);
 		this.controlUser = new ControlUser(sesion, transaction);
 		this.controlHistoryRole = new ControlHistoryRole(sesion, transaction);
 		this.controlHistoryUser = new ControlHistoryUser(sesion, transaction);

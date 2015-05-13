@@ -26,16 +26,16 @@ public class ControlRole {
 	 * atributos de la clase control Role
 	 */
 	Session sesion;
-	Transaction transaction;
+//	Transaction transaction;
 
 	/**
 	 * Constructor de la clase Role que pide por parametro
 	 * @param sesion
 	 * @param transaction
 	 */
-	public ControlRole(Session sesion, Transaction transaction) {
+	public ControlRole(Session sesion) {
 		this.sesion = sesion;
-		this.transaction = transaction;
+//		this.transaction = transaction;
 	}
 
 	/**
@@ -50,7 +50,8 @@ public class ControlRole {
 			Role role = new Role();
 			role.setName(name);
 			sesion.save(role);      
-			transaction.commit();
+//			transaction.commit();
+			sesion.beginTransaction().commit();
 		}catch(Exception e){
 
 			throw new ErrorConnection("No se pudo insertar el rol " + "Causa: "+e.getCause());
@@ -128,7 +129,8 @@ public class ControlRole {
 		Transaction transaction = sesion.beginTransaction();
 		Role role = consult(id);
 		sesion.delete(role);
-		transaction.commit();
+//		transaction.commit();
+		sesion.beginTransaction().commit();
 	}
 
 	/**
@@ -145,8 +147,9 @@ public class ControlRole {
 			role.setId(id);
 			role.setName(nombre);  
 			sesion.update(role);
-			transaction.commit();
+//			transaction.commit();
 			//		sesion.close();
+			sesion.beginTransaction().commit();
 		}catch(Exception e){
 
 			throw new ErrorConnection("El rol ingresado no se encuentra"+"Causa: "+e.getCause());
@@ -157,7 +160,7 @@ public class ControlRole {
 
 		Session sesion = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = sesion.beginTransaction();
-		ControlRole rol = new ControlRole(sesion,transaction);
+		ControlRole rol = new ControlRole(sesion);
 
 		try {
 
